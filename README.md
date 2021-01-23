@@ -20,3 +20,5 @@ You can stop the game and add more walls if you want.
 
 #### Reset
 If you want to reset the map just press Reset Button
+
+_Original Code can be found on this https://github.com/kubapilch/Ray-Tracing_
