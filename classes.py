@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import pygame
 import math
 
@@ -37,7 +38,7 @@ class Button():
     def text(self, t):
         # Render new label
         self._text = t
-        self.label = pygame.font.SysFont("monospace", 10).render(t, 1, (0, 0, 0))
+        self.label = pygame.font.SysFont("monospace", 15).render(t, 1, (0, 0, 0))
 
     def values(self):
         return (self.x, self.y, self.width, self.height)

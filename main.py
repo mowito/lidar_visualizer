@@ -1,20 +1,24 @@
+#!/usr/bin/env python3
+
 import pygame
 from classes import Wall, Button, Ray
 import math
 
 # --- CUSTOMIZABLE VARIABLES ---
-number_of_rays = 120 # Max 360
+number_of_rays = 360 # Max 360
 wall_thicknes = 2
-boundarySpacing = 10
+boundarySpacing = 20
 # ------------------------------
 
 
 # Setup
 pygame.init()
-size = (1200, 1200)
+size = (1500, 1500)
 menuSize = (90, 80)
+menusize2 = (size[0],60)
 surface = pygame.display.set_mode(size, pygame.RESIZABLE)
 menuSurface = pygame.Surface(menuSize)
+menuSurface2 = pygame.Surface(menusize2)
 pygame.display.set_caption("Rays")
 font = pygame.font.SysFont("monospace", 15)
 
@@ -35,24 +39,33 @@ wall_starting_pos = (0, 0)
 play = False
 carryOn = True
 clock = pygame.time.Clock()
-
+givenangle = 3
+prev = False
 
 # --- INITIAL SETUP ---
 
 # Buttons
 resetButton = Button(10, size[1]-menuSize[1]+10, 70, 25, 'Reset', RED)
 playButton = Button(10, resetButton.y + 10 + resetButton.height, 70, 25, 'Play', GREEN)
-
+angleButton = Button(10,10,70,40,'ANGLE:',RED)
+#Button for angles
+firstangleButton = Button(angleButton.x+10+angleButton.width,10,70,40,'30',WHITE)
+secondangleButton = Button(firstangleButton.x+10+firstangleButton.width,10,70,40,'45',WHITE)
+thirdangleButton = Button(secondangleButton.x+10+secondangleButton.width,10,70,40,'60',WHITE)
+fourthangleButton = Button(thirdangleButton.x+10+thirdangleButton.width,10,70,40,'90',WHITE)
+fifthangleButton = Button(fourthangleButton.x+10+fourthangleButton.width,10,70,40,'120',WHITE)
+sixthangleButton = Button(fifthangleButton.x+10+fifthangleButton.width,10,70,40,'180',WHITE)
+seventhangleButton = Button(sixthangleButton.x+10+sixthangleButton.width,10,70,40,'360',WHITE)
 # Boundaries
 def addBoundaries():
-    pass
+
     walls.insert(0, Wall((boundarySpacing, boundarySpacing), (size[0] - boundarySpacing, boundarySpacing)))
     walls.insert(0, Wall((boundarySpacing, boundarySpacing), (boundarySpacing, size[1] - boundarySpacing)))
     walls.insert(0, Wall((boundarySpacing, size[1] - boundarySpacing), (size[0] - boundarySpacing, size[1] - boundarySpacing)))
     walls.insert(0, Wall((size[0] - boundarySpacing, size[1] - boundarySpacing), (size[0] - boundarySpacing, boundarySpacing)))
 
 addBoundaries()
-print(walls)
+#print(walls)
 # Draw Menu
 def drawMenu():
     # Set color and transparency of the menu box
@@ -66,7 +79,23 @@ def drawMenu():
     resetButton.draw(surface)
     playButton.draw(surface)
 
+def drawMenu2():
+    #Set color and transparency of menu box
+    menuSurface2.fill(WHITE)
+    menuSurface2.set_alpha(126)
 
+    #Draw menu box
+    surface.blit(menuSurface2,(0,0))
+
+    #Draw Buttons
+    angleButton.draw(surface)
+    firstangleButton.draw(surface)
+    secondangleButton.draw(surface)
+    thirdangleButton.draw(surface)
+    fourthangleButton.draw(surface)
+    fifthangleButton.draw(surface)
+    sixthangleButton.draw(surface)
+    seventhangleButton.draw(surface)
 # -------- Main Program Loop -----------
 while carryOn:
     
@@ -98,7 +127,9 @@ while carryOn:
                 if resetButton.clicked(pos):
                     walls = []
                     addBoundaries()
-
+                    if prev:
+                        prev.color = WHITE
+                        givenangle = 3
                 elif playButton.clicked(pos):
                     # Change status of play button
                     if play:
@@ -110,7 +141,51 @@ while carryOn:
                     
                     drawing = False
                     play = not play
-                    
+
+                elif firstangleButton.clicked(pos):
+                    if prev:
+                        prev.color = WHITE
+                    firstangleButton.color = GREEN
+                    givenangle = int(firstangleButton.text)
+                    prev = firstangleButton
+                elif secondangleButton.clicked(pos):
+                    if prev:
+                        prev.color = WHITE
+                    secondangleButton.color = GREEN
+                    givenangle = int(secondangleButton.text)
+                    prev = secondangleButton
+                elif thirdangleButton.clicked(pos):
+                    if prev:
+                        prev.color = WHITE
+                    thirdangleButton.color = GREEN
+                    givenangle = int(thirdangleButton.text)
+                    prev = thirdangleButton
+                elif fourthangleButton.clicked(pos):
+                    if prev:
+                        prev.color = WHITE
+                    fourthangleButton.color = GREEN
+                    givenangle = int(fourthangleButton.text)
+                    prev = fourthangleButton
+                elif fifthangleButton.clicked(pos):
+                    if prev:
+                        prev.color = WHITE
+                    fifthangleButton.color = GREEN
+                    givenangle = int(fifthangleButton.text)
+                    prev = fifthangleButton
+                elif sixthangleButton.clicked(pos):
+                    if prev:
+                        prev.color = WHITE
+                    sixthangleButton.color = GREEN
+                    givenangle = int(sixthangleButton.text)
+                    prev = sixthangleButton
+                elif seventhangleButton.clicked(pos):
+                    if prev:
+                        prev.color = WHITE
+                    seventhangleButton.color = GREEN
+                    givenangle = int(seventhangleButton.text)
+                    prev = seventhangleButton
+
+
                 elif not play: # Drawing a wall
                     
                     # Check if user is already drawing a wall
@@ -122,6 +197,8 @@ while carryOn:
                         # Start drawing
                         drawing = True
                         wall_starting_pos = pos
+
+
             
             elif event.button == 3: # Right Click
                 drawing = False
@@ -131,7 +208,8 @@ while carryOn:
     # Calculate new rays
     if play:
         rays = []
-        for angle in range(0, 360, int(360/number_of_rays)):
+
+        for angle in range(0, 360, givenangle):
             # Create a new ray
             ray = Ray(pygame.mouse.get_pos(), angle)
 
@@ -158,7 +236,7 @@ while carryOn:
                     point = (int(x1 + t*(x2 - x1)), int(y1 + t*(y2 - y1)))
                     distance = ((point[0] - ray.start_pos[0])**2 + (point[1] - ray.start_pos[1])**2)**(1/2)
 
-                    # Check if this is the colosest wall
+                    # Check if this is the closest wall
                     if closest > distance:
                         ray.end_point = point
                         closest = distance
@@ -186,7 +264,7 @@ while carryOn:
 
     # Draw menu and all buttons
     drawMenu()
-
+    drawMenu2()
     # --- UPDATE THE SCREEN ---
     pygame.display.flip()
 
