@@ -15,13 +15,13 @@ boundarySpacing = 20
 pygame.init()
 size = (1500, 1500)
 menuSize = (90, 80)
-menusize2 = (size[0],60)
 surface = pygame.display.set_mode(size, pygame.RESIZABLE)
 menuSurface = pygame.Surface(menuSize)
-menuSurface2 = pygame.Surface(menusize2)
 pygame.display.set_caption("Rays")
 font = pygame.font.SysFont("monospace", 15)
-
+active = False
+text = ''
+done = False
 
 # Colors
 WHITE = (255, 255, 255)
@@ -29,7 +29,7 @@ BLACK = (0, 0, 0)
 RED = (255, 50, 50)
 YELLOW = (255, 255, 0)
 GREEN = (0, 255, 50)
-
+SNOW = (255,250,250)
 
 # Game variables
 walls = []
@@ -47,15 +47,17 @@ prev = False
 # Buttons
 resetButton = Button(10, size[1]-menuSize[1]+10, 70, 25, 'Reset', RED)
 playButton = Button(10, resetButton.y + 10 + resetButton.height, 70, 25, 'Play', GREEN)
-angleButton = Button(10,10,70,40,'ANGLE:',RED)
-#Button for angles
-firstangleButton = Button(angleButton.x+10+angleButton.width,10,70,40,'30',WHITE)
-secondangleButton = Button(firstangleButton.x+10+firstangleButton.width,10,70,40,'45',WHITE)
-thirdangleButton = Button(secondangleButton.x+10+secondangleButton.width,10,70,40,'60',WHITE)
-fourthangleButton = Button(thirdangleButton.x+10+thirdangleButton.width,10,70,40,'90',WHITE)
-fifthangleButton = Button(fourthangleButton.x+10+fourthangleButton.width,10,70,40,'120',WHITE)
-sixthangleButton = Button(fifthangleButton.x+10+fifthangleButton.width,10,70,40,'180',WHITE)
-seventhangleButton = Button(sixthangleButton.x+10+sixthangleButton.width,10,70,40,'360',WHITE)
+#Text box
+font1 = pygame.font.Font('freesansbold.ttf', 15)
+text1 = font1.render('Angle(in degrees):',True,WHITE,None)
+textRect = text1.get_rect()
+textRect.center = (100,40)
+input_box = pygame.Rect(textRect.right+10, 30, 140, 32)
+color_inactive = pygame.Color(GREEN)
+color_active = pygame.Color(SNOW)
+color = color_inactive
+
+
 # Boundaries
 def addBoundaries():
 
@@ -79,32 +81,17 @@ def drawMenu():
     resetButton.draw(surface)
     playButton.draw(surface)
 
-def drawMenu2():
-    #Set color and transparency of menu box
-    menuSurface2.fill(WHITE)
-    menuSurface2.set_alpha(126)
 
-    #Draw menu box
-    surface.blit(menuSurface2,(0,0))
 
-    #Draw Buttons
-    angleButton.draw(surface)
-    firstangleButton.draw(surface)
-    secondangleButton.draw(surface)
-    thirdangleButton.draw(surface)
-    fourthangleButton.draw(surface)
-    fifthangleButton.draw(surface)
-    sixthangleButton.draw(surface)
-    seventhangleButton.draw(surface)
 # -------- Main Program Loop -----------
 while carryOn:
     
     # --- MAIN EVENT LOOP ---
     for event in pygame.event.get(): 
         # If user wants to leave
-        if event.type == pygame.QUIT: 
-              carryOn = False 
-        
+        if event.type == pygame.QUIT:
+            carryOn = False
+            done = True
         # User has changed the size of a window
         if event.type == pygame.VIDEORESIZE:
             size = (event.w, event.h)
@@ -117,7 +104,28 @@ while carryOn:
             # Change buttons
             resetButton.y = size[1]-menuSize[1]+10
             playButton.y = resetButton.y + 10 + resetButton.height
+        #User has clicked text button
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            #if user clicked on input_box rect
+            if input_box.collidepoint(event.pos):
 
+                active = not active
+            else:
+                active = False
+            color = color_active if active else color_inactive
+
+        if event.type == pygame.KEYDOWN:
+            if active:
+                if event.key == pygame.K_RETURN or event.key == pygame.K_KP_ENTER:
+                    try:
+                        givenangle = int(text)
+                    except :
+                        text = ''
+
+                elif event.key == pygame.K_BACKSPACE:
+                    text = text[:-1]
+                else:
+                    text += event.unicode
         # User has clicked mouse button
         if event.type == pygame.MOUSEBUTTONUP:
             pos = pygame.mouse.get_pos()
@@ -130,6 +138,8 @@ while carryOn:
                     if prev:
                         prev.color = WHITE
                         givenangle = 3
+                    givenangle = 3
+                    text = ''
                 elif playButton.clicked(pos):
                     # Change status of play button
                     if play:
@@ -141,53 +151,9 @@ while carryOn:
                     
                     drawing = False
                     play = not play
-
-                elif firstangleButton.clicked(pos):
-                    if prev:
-                        prev.color = WHITE
-                    firstangleButton.color = GREEN
-                    givenangle = int(firstangleButton.text)
-                    prev = firstangleButton
-                elif secondangleButton.clicked(pos):
-                    if prev:
-                        prev.color = WHITE
-                    secondangleButton.color = GREEN
-                    givenangle = int(secondangleButton.text)
-                    prev = secondangleButton
-                elif thirdangleButton.clicked(pos):
-                    if prev:
-                        prev.color = WHITE
-                    thirdangleButton.color = GREEN
-                    givenangle = int(thirdangleButton.text)
-                    prev = thirdangleButton
-                elif fourthangleButton.clicked(pos):
-                    if prev:
-                        prev.color = WHITE
-                    fourthangleButton.color = GREEN
-                    givenangle = int(fourthangleButton.text)
-                    prev = fourthangleButton
-                elif fifthangleButton.clicked(pos):
-                    if prev:
-                        prev.color = WHITE
-                    fifthangleButton.color = GREEN
-                    givenangle = int(fifthangleButton.text)
-                    prev = fifthangleButton
-                elif sixthangleButton.clicked(pos):
-                    if prev:
-                        prev.color = WHITE
-                    sixthangleButton.color = GREEN
-                    givenangle = int(sixthangleButton.text)
-                    prev = sixthangleButton
-                elif seventhangleButton.clicked(pos):
-                    if prev:
-                        prev.color = WHITE
-                    seventhangleButton.color = GREEN
-                    givenangle = int(seventhangleButton.text)
-                    prev = seventhangleButton
-
-
-                elif not play: # Drawing a wall
-                    
+                elif not play:  # Drawing a wall
+                    if input_box.x<=pos[0]<=input_box.x+input_box.width and input_box.y<=pos[1]<= input_box.y+input_box.height:
+                        continue
                     # Check if user is already drawing a wall
                     if drawing:
                         # Finish drawing and add a new wall
@@ -197,6 +163,8 @@ while carryOn:
                         # Start drawing
                         drawing = True
                         wall_starting_pos = pos
+
+
 
 
             
@@ -246,7 +214,16 @@ while carryOn:
 
     # --- DRAWING ---
     surface.fill(BLACK)
+    surface.blit(text1,textRect)
+    #render the input text
+    txt_surface = font.render(text, True, color)
 
+    #resize the box if box is too long
+    width = max(200,txt_surface.get_width()+10)
+    input_box.w = width
+    # Blit the text.
+    surface.blit(txt_surface, (input_box.x + 5, input_box.y + 5))
+    pygame.draw.rect(surface,color,input_box,2)
     # Draw currently constructing wall
     if drawing:
         pygame.draw.line(surface, WHITE, wall_starting_pos, pygame.mouse.get_pos(), wall_thicknes)
@@ -264,7 +241,7 @@ while carryOn:
 
     # Draw menu and all buttons
     drawMenu()
-    drawMenu2()
+    #drawMenu2()
     # --- UPDATE THE SCREEN ---
     pygame.display.flip()
 
