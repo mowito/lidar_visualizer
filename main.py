@@ -1,25 +1,26 @@
 #!/usr/bin/env python3
 
 import pygame
-from classes import Wall, Button, Ray
+from classes import Wall, Button, Ray,InputBox
 import math
 
 # --- CUSTOMIZABLE VARIABLES ---
-number_of_rays = 360 # Max 360
+
 wall_thicknes = 2
-boundarySpacing = 20
+boundarySpacing = 30
 # ------------------------------
 
 
 # Setup
 pygame.init()
-size = (1500, 1500)
+size = (800, 800)
 menuSize = (90, 80)
 surface = pygame.display.set_mode(size, pygame.RESIZABLE)
 menuSurface = pygame.Surface(menuSize)
 pygame.display.set_caption("Rays")
 font = pygame.font.SysFont("monospace", 15)
 active = False
+active2 = False
 text = ''
 done = False
 
@@ -45,17 +46,54 @@ prev = False
 # --- INITIAL SETUP ---
 
 # Buttons
-resetButton = Button(10, size[1]-menuSize[1]+10, 70, 25, 'Reset', RED)
-playButton = Button(10, resetButton.y + 10 + resetButton.height, 70, 25, 'Play', GREEN)
+resetButton = Button(size[0]-menuSize[0]+10,10, 70, 25, 'Reset', RED)
+playButton = Button(size[0]-menuSize[0]+10, resetButton.y+10+resetButton.height, 70, 25, 'Play', GREEN)
+
 #Text box
 font1 = pygame.font.Font('freesansbold.ttf', 15)
 text1 = font1.render('Angle(in degrees):',True,WHITE,None)
 textRect = text1.get_rect()
-textRect.center = (100,40)
-input_box = pygame.Rect(textRect.right+10, 30, 140, 32)
-color_inactive = pygame.Color(GREEN)
-color_active = pygame.Color(SNOW)
-color = color_inactive
+textRect.center = (boundarySpacing+70,50)
+text2 = font1.render('Range of rays(0-250m):',True,WHITE,None)
+text2Rect = text2.get_rect()
+text2Rect.center = (boundarySpacing+90,textRect.centery+50)
+input_box = InputBox(textRect.right+10, boundarySpacing+10, 60, 32)
+input_box2 = InputBox(text2Rect.right+10,80,60,32)
+input_boxes = [input_box,input_box2]
+#Text box for graph edges in x axis
+graphbox1 = font1.render('0 m ',True,WHITE,None)
+graphbox1Rect = graphbox1.get_rect()
+graphbox1Rect.center = (boundarySpacing,size[1]-boundarySpacing+10)
+graphbox2 = font1.render('250 m ',True,WHITE,None)
+graphbox2Rect =graphbox2.get_rect()
+graphbox2Rect.center = (boundarySpacing+((size[0]-2*boundarySpacing)/2),size[1]-boundarySpacing+10)
+graphbox3 = font1.render('500 m',True,WHITE,None)
+graphbox3Rect = graphbox3.get_rect()
+graphbox3Rect.center = ((boundarySpacing+(size[0]-2*boundarySpacing)),size[1]-boundarySpacing+10)
+graphbox6 = font1.render('125 m',True,WHITE,None)
+graphbox6Rect = graphbox6.get_rect()
+graphbox6Rect.center = (boundarySpacing+((size[0]-2*boundarySpacing)/4),size[1]-boundarySpacing+10)
+graphbox7 = font1.render('375 m',True,WHITE,None)
+graphbox7Rect = graphbox7.get_rect()
+graphbox7Rect.center = (boundarySpacing+((size[0]-2*boundarySpacing)*3/4),size[1]-boundarySpacing+10)
+#Text Box for graph in y axis
+graphbox4 = font1.render('250m',True,WHITE,None)
+graphbox4Rect = graphbox4.get_rect()
+graphbox4Rect.center = (boundarySpacing-5,((size[1]-boundarySpacing)/2))
+graphbox5 = font1.render('500m',True,WHITE,None)
+graphbox5Rect = graphbox5.get_rect()
+graphbox5Rect.center = (boundarySpacing-5,boundarySpacing-10)
+graphbox8 = font1.render('125m',True,WHITE,None)
+graphbox8Rect = graphbox8.get_rect()
+graphbox8Rect.center = (boundarySpacing-5,(size[1]-boundarySpacing)*3/4)
+graphbox9 = font1.render('375m',True,WHITE,None)
+graphbox9Rect = graphbox9.get_rect()
+graphbox9Rect.center = (boundarySpacing-5,(size[1]-boundarySpacing)/4)
+#Text box for scale
+scale = font1.render('Length of room in meters',True,WHITE,None)
+scaleRect = scale.get_rect()
+scaleRect.center = (size[0]/2,boundarySpacing-10)
+
 
 
 # Boundaries
@@ -75,7 +113,7 @@ def drawMenu():
     menuSurface.set_alpha(126)
 
     # Draw menu box
-    surface.blit(menuSurface, (0, size[1]-menuSize[1]))
+    surface.blit(menuSurface, (size[0]-menuSize[0], 0))
 
     # Draw buttons
     resetButton.draw(surface)
@@ -102,44 +140,34 @@ while carryOn:
             addBoundaries()
 
             # Change buttons
-            resetButton.y = size[1]-menuSize[1]+10
-            playButton.y = resetButton.y + 10 + resetButton.height
-        #User has clicked text button
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            #if user clicked on input_box rect
-            if input_box.collidepoint(event.pos):
+            resetButton.x = size[0]-menuSize[0]+10
+            playButton.x = size[0]-menuSize[0]+10
+            #Change Textbox
+            graphbox1Rect.center = (boundarySpacing, size[1] - boundarySpacing + 10)
+            graphbox2Rect.center = (boundarySpacing + ((size[0] - 2 * boundarySpacing) / 2), size[1] - boundarySpacing + 10)
+            graphbox3Rect.center = ((boundarySpacing + (size[0] - 2 * boundarySpacing)), size[1] - boundarySpacing + 10)
+            graphbox4Rect.center = (boundarySpacing -5, ((size[1] - boundarySpacing) / 2))
+            graphbox5Rect.center = (boundarySpacing - 5, boundarySpacing-10)
+            scaleRect.center = (size[0] / 2, boundarySpacing - 10)
+            graphbox6Rect.center = (boundarySpacing + ((size[0] - 2 * boundarySpacing) / 4), size[1] - boundarySpacing + 10)
+            graphbox7Rect.center = (boundarySpacing + ((size[0] - 2 * boundarySpacing) * 3 / 4), size[1] - boundarySpacing + 10)
+            graphbox8Rect.center = (boundarySpacing - 5, (size[1] - boundarySpacing)* 3/4)
+            graphbox9Rect.center = (boundarySpacing - 5, (size[1] - boundarySpacing) / 4)
+        for box in input_boxes:
+            box.handle_event(event)
 
-                active = not active
-            else:
-                active = False
-            color = color_active if active else color_inactive
-
-        if event.type == pygame.KEYDOWN:
-            if active:
-                if event.key == pygame.K_RETURN or event.key == pygame.K_KP_ENTER:
-                    try:
-                        givenangle = int(text)
-                    except :
-                        text = ''
-
-                elif event.key == pygame.K_BACKSPACE:
-                    text = text[:-1]
-                else:
-                    text += event.unicode
         # User has clicked mouse button
         if event.type == pygame.MOUSEBUTTONUP:
             pos = pygame.mouse.get_pos()
-            
+            print(pos)
             if event.button == 1: #Left click
                 # Check if user clicked on one of the buttons
                 if resetButton.clicked(pos):
                     walls = []
                     addBoundaries()
-                    if prev:
-                        prev.color = WHITE
-                        givenangle = 3
-                    givenangle = 3
-                    text = ''
+                    for box in input_boxes:
+                        box.update()
+
                 elif playButton.clicked(pos):
                     # Change status of play button
                     if play:
@@ -151,9 +179,14 @@ while carryOn:
                     
                     drawing = False
                     play = not play
-                elif not play:  # Drawing a wall
-                    if input_box.x<=pos[0]<=input_box.x+input_box.width and input_box.y<=pos[1]<= input_box.y+input_box.height:
-                        continue
+
+                elif not play:# Drawing a wall
+
+
+                    if input_boxes[0].x <= pos[0] <= input_boxes[0].x + input_boxes[0].w and input_boxes[0].y <= pos[1] <= input_boxes[0].y + input_boxes[0].h:
+                            continue
+                    if input_boxes[1].x <= pos[0] <= input_boxes[1].x + input_boxes[1].w and input_boxes[1].y <= pos[1] <= input_boxes[1].y + input_boxes[1].h:
+                            continue
                     # Check if user is already drawing a wall
                     if drawing:
                         # Finish drawing and add a new wall
@@ -172,16 +205,22 @@ while carryOn:
                 drawing = False
  
     # --- GAME LOGIC ---
-    
+    distance = 0
+    point = (0,0)
     # Calculate new rays
     if play:
         rays = []
-
+        l = pygame.display.get_surface().get_width()
+        if input_box.text!='':
+            givenangle = int(input_box.text)
+        if input_box2.text!='':
+            l = int(input_box2.text)
+            l = l*((size[0]-2*boundarySpacing)/500)
         for angle in range(0, 360, givenangle):
             # Create a new ray
-            ray = Ray(pygame.mouse.get_pos(), angle)
+            ray = Ray(pygame.mouse.get_pos(), angle,l)
 
-            closest = 100000000000000000000000000 # Very big number
+
             # Check every wall
             for wall in walls:
                 x1, y1 = ray.start_pos
@@ -191,23 +230,21 @@ while carryOn:
                 x4, y4 = wall.B
 
                 # Magical formula from wikipedia https://en.wikipedia.org/wiki/Line%E2%80%93line_intersection
-                div = (x1 - x2)*(y3 - y4) - (y1 - y2)*(x3 - x4)
+                div = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4)
                 if div == 0:
                     # Parallel
                     continue
-                
-                t = ((x1 - x3)*(y3 - y4) - (y1 - y3)*(x3 - x4))/div
-                u = -((x1 - x2)*(y1 - y3) - (y1 - y2)*(x1 - x3))/div
+
+                t = ((x1 - x3) * (y3 - y4) - (y1 - y3) * (x3 - x4)) / div
+                u = -((x1 - x2) * (y1 - y3) - (y1 - y2) * (x1 - x3)) / div
 
                 # Check if there is an intersection point
                 if 0.0 < t and u > 0.0 and u < 1:
-                    point = (int(x1 + t*(x2 - x1)), int(y1 + t*(y2 - y1)))
-                    distance = ((point[0] - ray.start_pos[0])**2 + (point[1] - ray.start_pos[1])**2)**(1/2)
-
-                    # Check if this is the closest wall
-                    if closest > distance:
+                    point = (int(x1 + t * (x2 - x1)), int(y1 + t * (y2 - y1)))
+                    distance = ((point[0] - ray.start_pos[0]) ** 2 + (point[1] - ray.start_pos[1]) ** 2) ** (1 / 2)
+                    d1 = ((ray.end_point[0]-ray.start_pos[0])**2 + (ray.end_point[1]-ray.start_pos[1])**2) ** (1/2)
+                    if d1 > distance:
                         ray.end_point = point
-                        closest = distance
 
             rays.append(ray)
 
@@ -215,15 +252,19 @@ while carryOn:
     # --- DRAWING ---
     surface.fill(BLACK)
     surface.blit(text1,textRect)
-    #render the input text
-    txt_surface = font.render(text, True, color)
-
-    #resize the box if box is too long
-    width = max(200,txt_surface.get_width()+10)
-    input_box.w = width
-    # Blit the text.
-    surface.blit(txt_surface, (input_box.x + 5, input_box.y + 5))
-    pygame.draw.rect(surface,color,input_box,2)
+    surface.blit(text2,text2Rect)
+    surface.blit(graphbox1,graphbox1Rect)
+    surface.blit(graphbox2,graphbox2Rect)
+    surface.blit(graphbox3,graphbox3Rect)
+    surface.blit(graphbox4,graphbox4Rect)
+    surface.blit(graphbox5,graphbox5Rect)
+    surface.blit(graphbox6,graphbox6Rect)
+    surface.blit(scale,scaleRect)
+    surface.blit(graphbox7,graphbox7Rect)
+    surface.blit(graphbox8,graphbox8Rect)
+    surface.blit(graphbox9,graphbox9Rect)
+    for box in input_boxes:
+        box.draw(surface)
     # Draw currently constructing wall
     if drawing:
         pygame.draw.line(surface, WHITE, wall_starting_pos, pygame.mouse.get_pos(), wall_thicknes)
