@@ -1,5 +1,6 @@
 # lidar_visualizer
-a tool to visualize or simulate lidar
+a tool to visualize or simulate lidar.There are two ways to run this visualizer.One way is python and the other next is web browser.
+# PYTHON WAY:
 ## Requirements
 - `python 3.5+`
 - pygame `pip install pygame`
@@ -29,3 +30,10 @@ To add length of rays you should press the green box beside the range of rays(in
 If you want to reset the map just press Reset Button
 
 _Original Code can be found on this https://github.com/kubapilch/Ray-Tracing_
+# THROUGH HTML
+In this you have to run the index.html
+<ol>
+<h2> <b> Tech used </h2>
+  
+    1.P5 js library for drwaing points on a plane/casting rays without the pain
+ </ol>
