@@ -1,7 +1,12 @@
-let range = 0;
+let range = 10000;
 function rangeofrays(){
     var elem = document.getElementById("range");
     range = parseInt(elem.value);
+    if(range<=0){
+        range = 10000;
+        elem.value = "";
+    }
+
 }
 
 class Particle {
