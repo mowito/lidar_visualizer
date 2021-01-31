@@ -14,7 +14,7 @@ a tool to visualize or simulate lidar.There are two ways to run this visualizer.
 To build a wall you have to press left mouse button to set starting position for a wall, select ending point and press left mouse button again. To cancel drawing a wall press right mouse button. **You can't draw walls while playing**
 
 #### Playing
-Press Play button in down-left corner and move your mouse around to change a location of the source of light.
+Press Play button in upper-right corner and move your mouse around to change a location of the source of light.
 
 
 You can stop the game and add more walls if you want.
@@ -30,10 +30,29 @@ To add length of rays you should press the green box beside the range of rays(in
 If you want to reset the map just press Reset Button
 
 _Original Code can be found on this https://github.com/kubapilch/Ray-Tracing_
-# THROUGH HTML
-In this you have to run the index.html
-<ol>
-<h2> <b> Tech used </h2>
+# THROUGH WEB:
+  ## Requirements
+  -   `BROWSER`
+  ##  Usage
+  -  run `index.html` on your browser.
   
-    1.P5 js library for drwaing points on a plane/casting rays without the pain
- </ol>
+  ## Showcase
+  
+  ### Building Walls
+  To build a wall you have to touch and press left mouse button till you reach the end point and then leave it.
+   **You can't draw walls while playing.**
+   
+   <image src='images/walls.png'>
+ 
+ ### Angles
+ To add angle tyoe in the input box given on the upper side of the screen.
+ 
+ <image src='images/angle.png'>
+ 
+ ### Range of rays
+ To add range of rays type in the inout box given on the upper right of the screen.
+ 
+ <image src='images/range.png'>
+  
+  
+    
