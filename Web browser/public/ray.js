@@ -1,14 +1,16 @@
 class Ray {
     constructor(pos, angle) {
         this.pos = pos;
+        this.angle = angle;
         this.dir = p5.Vector.fromAngle(angle);
+        
     }
-
     show() {
         stroke(255);
         push();
         translate(this.pos.x, this.pos.y);
-        line(0, 0, this.dir.x * 10, this.dir.y * 10);
+        line(0, 0, this.dir.x*10 , this.dir.y*10 );
+
         pop();
     }
 
@@ -22,6 +24,7 @@ class Ray {
         const y3 = this.pos.y;
         const x4 = this.pos.x + this.dir.x;
         const y4 = this.pos.y + this.dir.y;
+        //console.log(this.dir.x-this.pos.x);
 
         const den = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
         if (den == 0) {
@@ -45,4 +48,4 @@ class Ray {
     //     this.dir.x = x - this.pos.x;
     //     this.dir.y = y - this.pos.y;
     //     this.dir.normalize();
-    // }
+    // 
