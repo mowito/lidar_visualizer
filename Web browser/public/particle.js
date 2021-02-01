@@ -2,7 +2,7 @@ let range = 10000;
 function rangeofrays(){
     var elem = document.getElementById("range");
     range = parseInt(elem.value);
-    if(range<=0){
+    if(range<0){
         range = 10000;
         elem.value = "";
     }
@@ -14,16 +14,22 @@ class Particle {
         this.pos = createVector(width / 2, height / 2);
         this.rays = [];
         this.getangle = getangle;
-        var x = parseInt(this.getangle);
-        if(x<=0){
-            x = 1;
-            var e = document.getElementById("angle");
-            e.value = "1";
-        }
-        for (let a = 0; a < 360; a += x) {
+        //var x = parseFloat(this.getangle);
+        if(this.getangle<0){
+            this.getangle = 1;
+            document.getElementById("angle").value = "1";
+        }   
+        
+        if(this.getangle!=0){
+        for (let a = 0; a < 360; a += this.getangle) {
             this.rays.push(new Ray(this.pos, radians(a)));
         }
+        
     }
+    }
+        
+          
+
 
     update(x, y) {
         this.pos.set(x, y);
@@ -36,6 +42,10 @@ class Particle {
             const ray = this.rays[i];
             let closest = null;
             let record = Infinity;
+            if(document.getElementById("range").value!=""){
+            range = parseInt(document.getElementById("range").value);
+            }
+            console.log(range);
             var length = ((width-2*boundarySpacing)/500)*range;
             var vec = p5.Vector.fromAngle(ray.angle,length);
 
@@ -59,11 +69,11 @@ class Particle {
             if (d1>record) {
                 // colorMode(HSB);
                 // stroke((i + frameCount * 2) % 360, 255, 255, 50);
-                stroke(255,90);
+                stroke(color(0, 0, 255));
                 line(this.pos.x, this.pos.y, closest.x, closest.y);
             }
             else if(d1<=record){
-                stroke(255,90);
+                stroke(color(0, 0, 255));
                 line(this.pos.x,this.pos.y,p.x,p.y);
             }
             
