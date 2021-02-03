@@ -66,7 +66,8 @@ function createwalls(){
         x1 = mouseX;
         y1 = mouseY;
         drawing = true;
-                    
+        
+
     }
     else{
         x2 = mouseX;
@@ -79,7 +80,10 @@ function createwalls(){
 function draw() {
     background(255);
     
-    
+    if(drawing==true){
+        
+        line(x1,y1,mouseX,mouseY);
+    }
     
     
     
@@ -87,8 +91,7 @@ function draw() {
         wall.show();
     }
     
-        
-        
+   
         
      
     if(f==true){
