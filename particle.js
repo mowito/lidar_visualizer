@@ -46,7 +46,7 @@ class Particle {
             range = parseInt(document.getElementById("range").value);
             }
             console.log(range);
-            var length = ((width-2*boundarySpacing)/500)*range;
+            var length = ((width-2*boundarySpacing)/250)*range;
             var vec = p5.Vector.fromAngle(ray.angle,length);
 
             for (let wall of walls) {

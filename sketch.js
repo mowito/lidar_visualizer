@@ -9,15 +9,20 @@ let drawing = false;
 let x1,x2,y1,y2;
 let s;
 let g=1;
-
+let cnv;
 function setup() {
-    createCanvas(windowWidth-50, windowHeight-50);
+    cnv = createCanvas(windowWidth-50, windowHeight-50);
+    cnv.mouseClicked(createwalls);
+    
     walls.push(new Boundary(boundarySpacing, boundarySpacing, width-boundarySpacing, boundarySpacing));
     walls.push(new Boundary(width-boundarySpacing, boundarySpacing, width-boundarySpacing, height-boundarySpacing));
-    walls.push(new Boundary(width-boundarySpacing, height-boundarySpacing, boundarySpacing, height-boundarySpacing));
+   walls.push(new Boundary(width-boundarySpacing, height-boundarySpacing, boundarySpacing, height-boundarySpacing));
     walls.push(new Boundary(boundarySpacing, height-boundarySpacing, boundarySpacing, boundarySpacing));
-    console.log(width);
-    console.log(height);
+    //console.log(width);
+    //console.log(height);
+
+    
+
 }
 function play(){
     var elem = document.getElementById("play");
@@ -41,6 +46,7 @@ function reset(){
     var elem2 = document.getElementById("range");
     elem2.value = "";
     range = 100000;
+    drawing = false;
     walls.push(new Boundary(boundarySpacing, boundarySpacing, width-boundarySpacing, boundarySpacing));
     walls.push(new Boundary(width-boundarySpacing, boundarySpacing, width-boundarySpacing, height-boundarySpacing));
     walls.push(new Boundary(width-boundarySpacing, height-boundarySpacing, boundarySpacing, height-boundarySpacing));
@@ -52,30 +58,39 @@ function angle(){
     g = e.value;
     
 }
+function createwalls(){
+
+    
+        
+    if(drawing===false){
+        x1 = mouseX;
+        y1 = mouseY;
+        drawing = true;
+                    
+    }
+    else{
+        x2 = mouseX;
+        y2 = mouseY;
+        drawing = false;
+        walls.push(new Boundary(x1,y1,x2,y2));
+    }
+}
 
 function draw() {
     background(255);
-    if(mouseIsPressed === true && f!=true){
-        
-        if(mouseX>boundarySpacing && mouseX<width-boundarySpacing && mouseY>boundarySpacing && mouseY<height-boundarySpacing ){
-            if(drawing==true){
-                x2 = mouseX
-                y2 = mouseY;
-                walls.push(new Boundary(x1,y1,x2,y2));
-                drawing = false;
-            }
-            else{
-                x1 = mouseX
-                y1 = mouseY;
-                drawing = true;
-            }
-        }
-        
-    }       
+    
+    
+    
+    
+    
     for (let wall of walls) {
         wall.show();
     }
-
+    
+        
+        
+        
+     
     if(f==true){
     if(document.getElementById("angle").value!=""){
     g = parseFloat(document.getElementById("angle").value);
@@ -87,19 +102,17 @@ function draw() {
     }
     textSize(15);
     fill(50);
-    text("250m",width-boundarySpacing+10,boundarySpacing);
-    text("125m",width-boundarySpacing+10,(height-boundarySpacing)/2)
+    text("150m",width-boundarySpacing+10,boundarySpacing);
+    text("75m",width-boundarySpacing+10,(height-boundarySpacing)/2)
     text("0m",width-boundarySpacing+10,(height-boundarySpacing));
     textSize(13);
-    text("62.5m",width-boundarySpacing+10,(height-boundarySpacing)*(3/4));
-    text("187.5m",width-boundarySpacing+10,(height-boundarySpacing)/4);
+    text("37.5m",width-boundarySpacing+10,(height-boundarySpacing)*(3/4));
+    text("112.5m",width-boundarySpacing+10,(height-boundarySpacing)/4);
     textSize(15);
-    text("125m",(width-boundarySpacing)*(3/4),height-boundarySpacing+20);
-    text("250m",(width-boundarySpacing)/2,height-boundarySpacing+20);
-    text("375m",(width-boundarySpacing)/4,height-boundarySpacing+20);
-    text("500m",boundarySpacing,height-boundarySpacing+20);
-    textSize(25);
-    text("Dimensions of room is 250 X 500 metres",(boundarySpacing+400)/2,boundarySpacing-10);
+    text("67.5m",(width-boundarySpacing)*(3/4),height-boundarySpacing+20);
+    text("125m",(width-boundarySpacing)/2,height-boundarySpacing+20);
+    text("187.5m",(width-boundarySpacing)/4,height-boundarySpacing+20);
+    text("250m",boundarySpacing,height-boundarySpacing+20);
     stroke(0);
     textSize(30);
     text("-",width-boundarySpacing-5,((height-boundarySpacing)*(250-15.625))/250);
@@ -131,10 +144,14 @@ function draw() {
     text("|",(width-boundarySpacing)*3/20,height-boundarySpacing+10);
     text("|",(width-boundarySpacing)*2/20,height-boundarySpacing+10);
     text("|",(width-boundarySpacing)*1/20,height-boundarySpacing+10);
+    
+        
+    
+    
+        
+    
 
 
-
-
-    xoff += 0.01;
-    yoff += 0.01;
+    //xoff += 0.01;
+    //yoff += 0.01;
 }
