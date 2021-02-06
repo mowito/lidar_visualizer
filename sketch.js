@@ -11,9 +11,9 @@ let s;
 let g=1;
 let cnv;
 function setup() {
-    cnv = createCanvas(windowWidth-50, windowHeight-50);
+    cnv = createCanvas(windowWidth-300, windowHeight-100);
     cnv.mouseClicked(createwalls);
-    
+    cnv.position(300,100);
     walls.push(new Boundary(boundarySpacing, boundarySpacing, width-boundarySpacing, boundarySpacing));
     walls.push(new Boundary(width-boundarySpacing, boundarySpacing, width-boundarySpacing, height-boundarySpacing));
    walls.push(new Boundary(width-boundarySpacing, height-boundarySpacing, boundarySpacing, height-boundarySpacing));

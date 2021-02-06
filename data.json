@@ -1,0 +1,10 @@
+[
+    {
+        "name": "G4",
+        "DetectionDistance" : "0.2-16m",
+        "Accuracy" : "distance < 2.0m: < 0.5mm distance > 2.0m: < 1%",
+        "Angularrange" : "360",
+        "Angularresolution" : "0.3",
+        "scanningfrequency" : "5 ~ 12 Hz"
+    }
+]

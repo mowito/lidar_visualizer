@@ -1,4 +1,5 @@
 let range = 10000;
+
 function rangeofrays(){
     var elem = document.getElementById("range");
     range = parseInt(elem.value);
@@ -18,10 +19,12 @@ class Particle {
         if(this.getangle<0){
             this.getangle = 1;
             document.getElementById("angle").value = "1";
-        }   
+        }
+       
+        var y = parseInt(angularrange);
         
         if(this.getangle!=0){
-        for (let a = 0; a < 360; a += this.getangle) {
+        for (let a = 0; a < angularrange; a += this.getangle) {
             this.rays.push(new Ray(this.pos, radians(a)));
         }
         
