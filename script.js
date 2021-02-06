@@ -37,7 +37,7 @@ function assist(lidar){
     
     var output = "<h1>" + lidar.options[lidar.selectedIndex].text + "</h1>"; 
     //console.log(lidar.options[lidar.selectedIndex].entries);
-    output += "<ul>"
+    output += "<p>"
     lidar.options[lidar.selectedIndex].entries.forEach(element => {
         let key = element[0];
         let value  = element[1];
@@ -61,7 +61,7 @@ function assist(lidar){
         }
     });
       
-    output += "</ul";
+    output += "</p";
     document.getElementById("update").innerHTML = output;
     
 
