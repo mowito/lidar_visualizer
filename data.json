@@ -6,5 +6,15 @@
         "Angularrange" : "360",
         "Angularresolution" : "0.3",
         "scanningfrequency" : "5 ~ 12 Hz"
+    },
+    {
+        "name": "UST-20LX",
+        "DetectionDistance" : "0.02 ~ 20 m",
+        "Accuracy" : "±40mm",
+        "Angularrange" : "270",
+        "Angularresolution" : "0.2",
+        "scanningfrequency" : "40 Hz"
     }
+    
+
 ]
