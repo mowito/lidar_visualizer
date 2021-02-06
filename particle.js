@@ -9,7 +9,10 @@ function rangeofrays(){
     }
 
 }
-
+function angularrange(){
+    var elem = document.getElementById("angrange");
+    angularrange = parseInt(elem.value);
+}
 class Particle {
     constructor(getangle) {
         this.pos = createVector(width / 2, height / 2);
@@ -20,11 +23,15 @@ class Particle {
             this.getangle = 1;
             document.getElementById("angle").value = "1";
         }
-       
-        var y = parseInt(angularrange);
-        
+        var y;
+       if(document.getElementById("angrange").value!=""){
+        y = parseInt(document.getElementById("angrange").value);
+       }
+       else{
+           y = 360; 
+       }
         if(this.getangle!=0){
-        for (let a = 0; a < angularrange; a += this.getangle) {
+        for (let a = 0; a < y; a += this.getangle) {
             this.rays.push(new Ray(this.pos, radians(a)));
         }
         

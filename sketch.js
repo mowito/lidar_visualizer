@@ -46,12 +46,16 @@ function reset(){
     var elem2 = document.getElementById("range");
     elem2.value = "";
     range = 100000;
+    document.getElementById("angrange").value = ""
     drawing = false;
     walls.push(new Boundary(boundarySpacing, boundarySpacing, width-boundarySpacing, boundarySpacing));
     walls.push(new Boundary(width-boundarySpacing, boundarySpacing, width-boundarySpacing, height-boundarySpacing));
     walls.push(new Boundary(width-boundarySpacing, height-boundarySpacing, boundarySpacing, height-boundarySpacing));
     walls.push(new Boundary(boundarySpacing, height-boundarySpacing, boundarySpacing, boundarySpacing));
     
+    document.getElementById("update").innerHTML= "";
+    document.getElementById("lidar").value = "Choose Lidar Type";
+    document.getElementById("lidar").text = "Choose Lidar Type";
 }
 function angle(){
     var e = document.getElementById("angle");

@@ -1,7 +1,7 @@
 var angularrange = 360;
 let dropdown = document.getElementById("lidar");
 dropdown.length = 0;
-
+let flag = true;
 let defaultOption = document.createElement('option');
 defaultOption.text = 'Choose Lidar Type';
 dropdown.add(defaultOption);
@@ -34,6 +34,7 @@ request.onreadystatechange = function(){
 
 
 function assist(lidar){
+    
     var output = "<h1>" + lidar.options[lidar.selectedIndex].text + "</h1>"; 
     //console.log(lidar.options[lidar.selectedIndex].entries);
     output += "<ul>"
@@ -41,14 +42,25 @@ function assist(lidar){
         let key = element[0];
         let value  = element[1];
         output += key + ": " + value;
-        output += "<br>";
+        output += "<br><br><br>";
         if(key==="Angular range"){
             angularrange = value;
+            document.getElementById("angrange").value = value;
+        }
+        if(key==="Angular resolution"){
+            document.getElementById("angle").value = value;
+        }
+        if(key=="Detection Distance"){
+            var patt = "[0-9/.]*";
+            var res = value.match(patt);
+            console.log(res);
+            document.getElementById("range").value = res; 
         }
     });
       
     output += "</ul";
     document.getElementById("update").innerHTML = output;
     
+
 
 }
