@@ -21,12 +21,10 @@ request.onreadystatechange = function(){
         option = document.createElement('option');
         option.text = items[i].name;
         option.value = items[i].name;
-        option.frequency = items[i].scanningfrequency;
-        option.angularrange = items[i].Angularrange;
-        option.angleresolution = items[i].Angularresolution;
-        option.accuracy = items[i].Accuracy;
-        option.detectiondistance = items[i].DetectionDistance;
+        option.entries = Object.entries(items[i]);
         dropdown.add(option);
+        
+        
         
         }
     }
@@ -37,13 +35,20 @@ request.onreadystatechange = function(){
 
 function assist(lidar){
     var output = "<h1>" + lidar.options[lidar.selectedIndex].text + "</h1>"; 
-    output += "<ul>";
-    output += "ACCURACY:" + "<li>" + lidar.options[lidar.selectedIndex].accuracy + "</li>" + "<br>";
-    output += "DETECTION DISTANCE:" + "<li>" + lidar.options[lidar.selectedIndex].detectiondistance + "</li>" + "<br>";
-    output += "Scanning Frequency" + "<li>" + lidar.options[lidar.selectedIndex].frequency + "</li>" + "<br>";
-    output += "</ul>";
+    //console.log(lidar.options[lidar.selectedIndex].entries);
+    output += "<ul>"
+    lidar.options[lidar.selectedIndex].entries.forEach(element => {
+        let key = element[0];
+        let value  = element[1];
+        output += key + ": " + value;
+        output += "<br>";
+        if(key==="Angular range"){
+            angularrange = value;
+        }
+    });
+      
+    output += "</ul";
     document.getElementById("update").innerHTML = output;
-    angularrange = lidar.options[lidar.selectedIndex].angularrange;
-            
+    
 
 }

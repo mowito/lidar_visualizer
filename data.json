@@ -1,20 +1,23 @@
 [
     {
         "name": "G4",
-        "DetectionDistance" : "0.2-16m",
+        "Detection Distance" : "0.2-16m",
         "Accuracy" : "distance < 2.0m: < 0.5mm distance > 2.0m: < 1%",
-        "Angularrange" : "360",
-        "Angularresolution" : "0.3",
-        "scanningfrequency" : "5 ~ 12 Hz"
+        "Angular range" : "360",
+        "Angular resolution" : "0.3",
+        "scanning frequency" : "5 ~ 12 Hz"
+        
     },
     {
         "name": "UST-20LX",
-        "DetectionDistance" : "0.02 ~ 20 m",
+        "Detection Distance" : "0.02 ~ 20 m",
         "Accuracy" : "±40mm",
-        "Angularrange" : "270",
-        "Angularresolution" : "0.2",
-        "scanningfrequency" : "40 Hz"
+        "Angular range" : "270",
+        "Angular resolution" : "0.2",
+        "scanning frequency" : "40 Hz",
+        "Price excluding tax" : "266 €"
     }
+    
     
 
 ]
