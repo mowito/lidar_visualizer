@@ -11,7 +11,7 @@
   cursor: pointer;
   background-color: black;
   position: absolute;
-  left:35%;
+  left:19%;
   top:6%
    
 }
@@ -32,7 +32,7 @@
   cursor: pointer;
   background-color: black;
   position: absolute;
-  left:42%;
+  left:27%;
   top:6%;
 }
 #angle{
@@ -48,7 +48,7 @@
   cursor: pointer;
   background-color: black;
   position: absolute;
-  left: 60%;
+  left: 47%;
   top:5%;
 }
 #range{
@@ -64,21 +64,21 @@
   cursor: pointer;
   background-color: black;
   position: absolute;
-  left :80%;
+  left :69%;
   top: 5%;
   
 }
 #b{
   width: 20%;
   position: absolute;
-  left: 70%;
+  left: 58%;
   top: 7%;
 }
 
 #a{
   width: 20%;
   position:absolute;
-  left:50%;
+  left:35%;
   top:7%;
 }
 .dropbtn {
@@ -128,7 +128,7 @@
 #update{
 
  position: fixed;
- top:30%;
+ top:15%;
  font-size: large;
  background: rgba(0,0,0,0.1);
 }
@@ -143,28 +143,30 @@
   margin: 4px 2px;
   cursor: pointer;
   background-color: black;
+  position:absolute;
+  top: 6%;
 }
 #angrange{
   width: 5%;
   border: none;
   color: white;
-  padding: 10px 20px;
+  padding: 15px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 15px;
-  margin: 4px 2px;
+  margin: 4px 6px;
   cursor: pointer;
   background-color: black;
   position: absolute;
-  left:25%;
-  top:6%
+  left:85%;
+  top:5%;
   
 }
 #c{
   position:absolute;
-  left:19%;
-  top:8%;
+  left:78%;
+  top:7%;
   width: 20%;
 }
 @media (max-width: 300 px){

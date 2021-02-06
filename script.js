@@ -41,8 +41,10 @@ function assist(lidar){
     lidar.options[lidar.selectedIndex].entries.forEach(element => {
         let key = element[0];
         let value  = element[1];
+        if(key!="name"){
         output += key + ": " + value;
-        output += "<br><br><br>";
+        output += "<br><br>";
+        }
         if(key==="Angular range"){
             angularrange = value;
             document.getElementById("angrange").value = value;
@@ -50,6 +52,7 @@ function assist(lidar){
         if(key==="Angular resolution"){
             document.getElementById("angle").value = value;
         }
+        
         if(key=="Detection Distance"){
             var patt = "[0-9/.]*";
             var res = value.match(patt);
