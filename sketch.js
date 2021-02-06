@@ -20,7 +20,7 @@ function setup() {
     walls.push(new Boundary(boundarySpacing, height-boundarySpacing, boundarySpacing, boundarySpacing));
     //console.log(width);
     //console.log(height);
-
+    
     
 
 }

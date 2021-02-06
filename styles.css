@@ -128,7 +128,7 @@
 #update{
 
  position: fixed;
- top:15%;
+ top:17%;
  font-size: large;
  background: rgba(0,0,0,0.1);
 }
@@ -144,7 +144,7 @@
   cursor: pointer;
   background-color: black;
   position:absolute;
-  top: 6%;
+  top: 11%;
 }
 #angrange{
   width: 5%;

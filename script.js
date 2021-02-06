@@ -61,7 +61,7 @@ function assist(lidar){
         }
     });
       
-    output += "</p";
+    output += "</p>";
     document.getElementById("update").innerHTML = output;
     
 
