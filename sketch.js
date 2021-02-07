@@ -64,7 +64,7 @@ function angle(){
 }
 function createwalls(){
 
-    
+    if(f==false){
         
     if(drawing===false){
         x1 = mouseX;
@@ -80,7 +80,7 @@ function createwalls(){
         walls.push(new Boundary(x1,y1,x2,y2));
     }
 }
-
+}
 function draw() {
     background(255);
     
