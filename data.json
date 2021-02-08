@@ -1,6 +1,29 @@
 [
     {
-        "name": "G4",
+        "name": "Sick TIM561-2050101",
+        "Dimension" : "2D",
+        "Detection Distance" : "10 m",
+        "Accuracy" : "± 60mm",
+        "Angular range (Deg)" : "270",
+        "steps" : "818",
+        "Angular resolution" : "0.33",
+        "scanning frequency (Max)" : "15 Hz",
+        "ROS Compatible" : "yes"
+    }
+    {
+        "name": "Sick LMS511-10100 Pro",
+        "Dimension" : "2D",
+        "Detection Distance" : "80 m",
+        "Accuracy" : "± 25mm",
+        "Angular range (Deg)" : "190",
+        "steps" : "1137",
+        "Angular resolution" : "1",
+        "scanning frequency (Max)" : "100 Hz",
+        "ROS Compatible" : "yes"
+    }
+
+    {
+        "name": "YDLIDAR G4",
         "Detection Distance" : "16 m",
         "Accuracy" : "distance < 2.0m: < 0.5mm distance > 2.0m: < 1%",
         "Angular range" : "360",
@@ -9,15 +32,14 @@
         
     },
     {
-        "name": "UST-20LX",
+        "name": "Hokoyu UST-20LX",
         "Detection Distance" : "20 m",
         "Accuracy" : "±40mm",
         "Angular range" : "270",
         "Angular resolution" : "0.2",
         "scanning frequency" : "40 Hz",
-        "Price excluding tax" : "266 €"
     }
     
-    
+
 
 ]
