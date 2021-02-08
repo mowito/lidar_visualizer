@@ -9,7 +9,8 @@
         "Angular resolution" : "0.33",
         "scanning frequency (Max)" : "15 Hz",
         "ROS Compatible" : "yes"
-    }
+    },
+    
     {
         "name": "Sick LMS511-10100 Pro",
         "Dimension" : "2D",
@@ -20,7 +21,7 @@
         "Angular resolution" : "1",
         "scanning frequency (Max)" : "100 Hz",
         "ROS Compatible" : "yes"
-    }
+    },
 
     {
         "name": "YDLIDAR G4",
