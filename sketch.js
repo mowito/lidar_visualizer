@@ -10,6 +10,7 @@ let x1,x2,y1,y2;
 let s;
 let g=1;
 let cnv;
+let len = 150;
 function setup() {
     cnv = createCanvas(windowWidth-300, windowHeight-100);
     cnv.mouseClicked(createwalls);
@@ -109,17 +110,23 @@ function draw() {
     }
     textSize(15);
     fill(50);
-    text("150m",width-boundarySpacing+10,boundarySpacing);
-    text("75m",width-boundarySpacing+10,(height-boundarySpacing)/2)
+    if(document.getElementById("length").value!=""){
+    len = parseInt(document.getElementById("length").value);
+    }
+    text(len+"m",width-boundarySpacing+10,boundarySpacing);
+    text(len/2+"m",width-boundarySpacing+10,(height-boundarySpacing)/2)
     text("0m",width-boundarySpacing+10,(height-boundarySpacing));
     textSize(13);
-    text("37.5m",width-boundarySpacing+10,(height-boundarySpacing)*(3/4));
-    text("112.5m",width-boundarySpacing+10,(height-boundarySpacing)/4);
+    text(len/4+"m",width-boundarySpacing+10,(height-boundarySpacing)*(3/4));
+    text(len*3/4 + "m",width-boundarySpacing+10,(height-boundarySpacing)/4);
+    if(document.getElementById("breadth").value!=""){
+        breadth = parseInt(document.getElementById("breadth").value)
+    }
     textSize(15);
-    text("67.5m",(width-boundarySpacing)*(3/4),height-boundarySpacing+20);
-    text("125m",(width-boundarySpacing)/2,height-boundarySpacing+20);
-    text("187.5m",(width-boundarySpacing)/4,height-boundarySpacing+20);
-    text("250m",boundarySpacing,height-boundarySpacing+20);
+    text(breadth/4 + "m",(width-boundarySpacing)*(3/4),height-boundarySpacing+20);
+    text(breadth/2+"m",(width-boundarySpacing)/2,height-boundarySpacing+20);
+    text(breadth*3/4+"m",(width-boundarySpacing)/4,height-boundarySpacing+20);
+    text(breadth+"m",boundarySpacing,height-boundarySpacing+20);
     stroke(0);
     textSize(30);
     text("-",width-boundarySpacing-5,((height-boundarySpacing)*(250-15.625))/250);

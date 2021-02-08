@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <script src="https://cdn.jsdelivr.net/npm/p5@1.1.4/lib/p5.min.js"></script>
-
+    <link rel = "icon" href = "images/mowito_icon .png" type = "image/x-icon"> 
     <title>Mowito Lidar Visualizer</title>
   </head>
   <body>
@@ -14,15 +14,17 @@
     
   </select>
 
-    
+    <a href="https://mowito.in/" id="contactus" target="_blank">Contact Us</a>
     <div id="update"></div>
     <a href="https://mowito.in/">
     <img src="images/mowito.png" width="15%" height="10%"></a>
     <input type="button" id="play" onclick="play()" value="Play" ></input>
     <input type="button" id="reset" onclick="reset()" value="Reset" data-inline="true"></input>
-    <label id= "a" for="angle">Angular Resolution (Deg):</label><input type="number" step="0.1" id="angle" onclick="angle()" placeholder="angle" data-inline="true" ></input>
-    <label id="b" for="range" >Detection Range (m):</label> <input type="number" id="range" onclick="rangeofrays()" placeholder="detection distance" data-inline="true"></input>
-    <label id="c" for="angrange">Angular Range (Deg) :</label> <input type="number" id="angrange" onclick="angularrange()" data-inline="true" placeholder="Angle Range"></input>
+    <label id= "a" for="angle">Angular Resolution (Deg):</label><input type="number" step="0.1" id="angle" onclick="angle()" placeholder="angle" data-inline="true" value="1" ></input>
+    <label id="b" for="range" >Detection Range (m):</label> <input type="number" id="range" onclick="rangeofrays()" placeholder="detection distance" data-inline="true" value="500"></input>
+    <label id="c" for="angrange">Angular Range (Deg) :</label> <input type="number" id="angrange" onclick="angularrange()" data-inline="true" placeholder="Angle Range" value="360"></input>
+    <label id="lenlabel" for="length">Room Length:</label><input type="number" id="length" placeholder="Length" data-inline="true" value="150"></input>
+    <label id="widlabel" for="length">Room Breadth:</label><input type="number" id="breadth" placeholder="Breadth" data-inline="true" value="250"></input>
     <script src="script.js"></script>
     <script src="sketch.js"></script>   
     <script src="ray.js"></script>

@@ -1,5 +1,5 @@
 let range = 10000;
-
+let breadth = 250;
 function rangeofrays(){
     var elem = document.getElementById("range");
     range = parseInt(elem.value);
@@ -55,8 +55,10 @@ class Particle {
             if(document.getElementById("range").value!=""){
             range = parseInt(document.getElementById("range").value);
             }
-            console.log(range);
-            var length = ((width-2*boundarySpacing)/250)*range;
+            if(document.getElementById("breadth").value != ""){
+                breadth = parseInt(document.getElementById("breadth").value);
+            }
+            var length = ((width-2*boundarySpacing)/breadth)*range;
             var vec = p5.Vector.fromAngle(ray.angle,length);
 
             for (let wall of walls) {
