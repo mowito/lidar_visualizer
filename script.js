@@ -35,7 +35,7 @@ request.onreadystatechange = function(){
 
 function assist(lidar){
     
-    var output = "<h2>" + lidar.options[lidar.selectedIndex].text + "</h1>"; 
+    var output = "<h2>" + lidar.options[lidar.selectedIndex].text + "</h2>"; 
     //console.log(lidar.options[lidar.selectedIndex].entries);
     output += "<p>"
     lidar.options[lidar.selectedIndex].entries.forEach(element => {
