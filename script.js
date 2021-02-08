@@ -35,7 +35,7 @@ request.onreadystatechange = function(){
 
 function assist(lidar){
     
-    var output = "<h1>" + lidar.options[lidar.selectedIndex].text + "</h1>"; 
+    var output = "<h2>" + lidar.options[lidar.selectedIndex].text + "</h1>"; 
     //console.log(lidar.options[lidar.selectedIndex].entries);
     output += "<p>"
     lidar.options[lidar.selectedIndex].entries.forEach(element => {
@@ -56,7 +56,7 @@ function assist(lidar){
         if(key=="Detection Distance"){
             var patt = "[0-9/.]*";
             var res = value.match(patt);
-            console.log(res);
+            
             document.getElementById("range").value = res; 
         }
     });
