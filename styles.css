@@ -1,34 +1,10 @@
-#lenlabel{
-  position:absolute;
-  width: 20%;
-  clear: left;
-  text-align: left;
-  left: 19%;
-  top: 2%;
-}
 
-#length{
-  width: 5%;
-  border: none;
-  color: white;
-  padding: 10px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 12px;
-  margin: 4px 2px;
-  cursor: pointer;
-  background-color: black;
-  position: absolute;
-  left: 27%;
-  top: 1%;
-}
 #widlabel{
   position:absolute;
   width: 20%;
   clear: left;
   text-align: left;
-  left: 67%;
+  left: 42%;
   top: 2%;
 }
 #breadth{
@@ -44,7 +20,7 @@
   cursor: pointer;
   background-color: black;
   position: absolute;
-  left: 76%;
+  left: 50%;
   top: 1%;
 }
 
@@ -266,7 +242,7 @@
 }
 #contactus{
   position: absolute;
-  top: 95%;
+  top: 92%;
   left: 3%;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 30px;

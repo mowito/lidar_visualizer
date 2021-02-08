@@ -110,18 +110,16 @@ function draw() {
     }
     textSize(15);
     fill(50);
-    if(document.getElementById("length").value!=""){
-    len = parseInt(document.getElementById("length").value);
+    if(document.getElementById("breadth").value!=""){
+    breadth = parseInt(document.getElementById("breadth").value);
     }
+    len = (235/500)*breadth;
     text(len+"m",width-boundarySpacing+10,boundarySpacing);
     text(len/2+"m",width-boundarySpacing+10,(height-boundarySpacing)/2)
     text("0m",width-boundarySpacing+10,(height-boundarySpacing));
     textSize(13);
     text(len/4+"m",width-boundarySpacing+10,(height-boundarySpacing)*(3/4));
     text(len*3/4 + "m",width-boundarySpacing+10,(height-boundarySpacing)/4);
-    if(document.getElementById("breadth").value!=""){
-        breadth = parseInt(document.getElementById("breadth").value)
-    }
     textSize(15);
     text(breadth/4 + "m",(width-boundarySpacing)*(3/4),height-boundarySpacing+20);
     text(breadth/2+"m",(width-boundarySpacing)/2,height-boundarySpacing+20);
