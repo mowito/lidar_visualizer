@@ -1,4 +1,15 @@
+.instr{
+  width: 15%;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  position: absolute;;
+  top: 25%;
+  font-size: large;
+ background: rgba(0,0,0,0.1);
 
+}
 #widlabel{
   position:absolute;
   width: 20%;
@@ -168,7 +179,8 @@
 .dropdown:hover .dropbtn {background-color: red;}
 
 #update{
-
+width: 15%;
+ word-wrap: break-word;
  position: fixed;
  top:19%;
  font-size: large;
