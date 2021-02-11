@@ -3,7 +3,7 @@ let ray;
 let particle;
 let xoff = 0;
 let yoff = 10000;
-let boundarySpacing = 50;
+let boundarySpacing = 60;
 let f = false;
 let drawing = false;
 let x1,x2,y1,y2;
@@ -12,9 +12,9 @@ let g=1;
 let cnv;
 let len = 150;
 function setup() {
-    cnv = createCanvas(windowWidth-300, windowHeight-100);
+    cnv = createCanvas(windowWidth-300, windowHeight-130);
     cnv.mouseClicked(createwalls);
-    cnv.position(300,100);
+    cnv.position(280,130);
     walls.push(new Boundary(boundarySpacing, boundarySpacing, width-boundarySpacing, boundarySpacing));
     walls.push(new Boundary(width-boundarySpacing, boundarySpacing, width-boundarySpacing, height-boundarySpacing));
    walls.push(new Boundary(width-boundarySpacing, height-boundarySpacing, boundarySpacing, height-boundarySpacing));
@@ -30,24 +30,28 @@ function play(){
     if(elem.value=="Play"){
         f=true;
         elem.value = "Stop";
+        elem.style.backgroundColor = "#CD5C5C";
     }
     else{
         f = false;
         elem.value = "Play";
+        elem.style.backgroundColor = "#8FBC8F";
     }
+    
 }
 function reset(){
     walls = [];
     f = false;
     var elem = document.getElementById("play");
     elem.value = "Play";
+    elem.style.backgroundColor = "#8FBC8F";
     var e = document.getElementById("angle");
-    e.value = "";
+    e.value = "1";
     g = 1;
     var elem2 = document.getElementById("range");
-    elem2.value = "";
+    elem2.value = "250";
     range = 100000;
-    document.getElementById("angrange").value = ""
+    document.getElementById("angrange").value = "360";
     drawing = false;
     walls.push(new Boundary(boundarySpacing, boundarySpacing, width-boundarySpacing, boundarySpacing));
     walls.push(new Boundary(width-boundarySpacing, boundarySpacing, width-boundarySpacing, height-boundarySpacing));
@@ -138,7 +142,7 @@ function draw() {
     text("-",width-boundarySpacing-5,((height-boundarySpacing)*(250-11*15.625))/250);
     text("-",width-boundarySpacing-5,((height-boundarySpacing)*(250-13*15.625))/250);
     text("-",width-boundarySpacing-5,((height-boundarySpacing)*(250-14*15.625))/250);
-    text("-",width-boundarySpacing-5,((height-boundarySpacing)*(250-15*15.625))/250);
+    
     textSize(20);
     text("|",(width-boundarySpacing)*19/20,height-boundarySpacing+10);
     text("|",(width-boundarySpacing)*18/20,height-boundarySpacing+10);
