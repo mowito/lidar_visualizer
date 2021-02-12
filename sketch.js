@@ -3,7 +3,8 @@ let ray;
 let particle;
 let xoff = 0;
 let yoff = 10000;
-let boundarySpacing = 60;
+// let boundarySpacing = 60;
+let boundarySpacing = 50 ;
 let f = false;
 let drawing = false;
 let x1,x2,y1,y2;
@@ -11,10 +12,13 @@ let s;
 let g=1;
 let cnv;
 let len = 150;
+
 function setup() {
-    cnv = createCanvas(windowWidth-300, windowHeight-130);
+    // cnv = createCanvas(windowWidth-300, windowHeight-130);
+    cnv = createCanvas(windowWidth-380, windowHeight-130);
     cnv.mouseClicked(createwalls);
-    cnv.position(280,130);
+    // cnv.position(280,130);
+    cnv.position(350,130);
     walls.push(new Boundary(boundarySpacing, boundarySpacing, width-boundarySpacing, boundarySpacing));
     walls.push(new Boundary(width-boundarySpacing, boundarySpacing, width-boundarySpacing, height-boundarySpacing));
    walls.push(new Boundary(width-boundarySpacing, height-boundarySpacing, boundarySpacing, height-boundarySpacing));

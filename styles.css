@@ -1,11 +1,13 @@
 .instr{
-  width: 15%;
+  /*width: 15%;*/
+  width: 20%;
   word-break: break-word;
   overflow-wrap: break-word;
   word-wrap: break-word;
   hyphens: auto;
   position: absolute;;
-  top: 25%;
+  /*top: 25%;*/
+  top: 20%;
   font-size: large;
  background: rgba(0,0,0,0.1);
 
@@ -24,7 +26,7 @@
   color: white;
   padding: 10px 20px;
   text-align: center;
-  text-decoration: none;
+  text-decoration: none;  
   display: inline-block;
   font-size: 12px;
   margin: 4px 2px;
