@@ -1,6 +1,6 @@
 .instr{
   /*width: 15%;*/
-  width: 20%;
+  width: 18%;
   word-break: break-word;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -18,7 +18,7 @@
   clear: left;
   text-align: left;
   left: 19%;
-  top: 7%;
+  top: 5%;
 }
 #breadth{
   width: 5%;
@@ -34,7 +34,7 @@
   background-color: black;
   position: absolute;
   left: 26%;
-  top: 5.5%;
+  top: 3.5%;
 }
 
 
@@ -94,7 +94,7 @@
   background-color: black;
   position: absolute;
   left: 47%;
-  top:5%;
+  top:3%;
 }
 #range{
   width: 5%;
@@ -110,14 +110,14 @@
   background-color: black;
   position: absolute;
   left :69%;
-  top: 5%;
+  top: 3%;
   
 }
 #b{
   width: 20%;
   position: absolute;
   left: 58%;
-  top: 7%;
+  top: 5%;
   clear: left;
   text-align:left;
 }
@@ -128,7 +128,7 @@
   width: 20%;
   position:absolute;
   left:35%;
-  top:7%;
+  top:5%;
   clear: left;
   text-align:left;
 }
@@ -184,7 +184,7 @@
 width: 15%;
  word-wrap: break-word;
  position: fixed;
- top:19%;
+ top:20%;
  font-size: large;
  background: rgba(0,0,0,0.1);
 }
@@ -216,14 +216,14 @@ width: 15%;
   background-color: black;
   position: absolute;
   left:89%;
-  top:5%;
+  top:3%;
 
   
 }
 #c{
   position:absolute;
   left:78%;
-  top:7%;
+  top:5%;
   width: 20%;
   clear: left;
   text-align:left;
@@ -260,12 +260,12 @@ width: 15%;
 }
 #contactus{
   position: absolute;
-  top: 92%;
-  left: 3%;
+  top: 9.3%;
+  left: 85%;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 30px;
-  
-  color: rgb(43,114,216);
+  background-color:  rgb(43,114,216);
+  color: white;
   text-decoration: none;
   padding: 10px 10px;
 }

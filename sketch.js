@@ -112,9 +112,11 @@ function draw() {
     g = parseFloat(document.getElementById("angle").value);
     }
     particle = new Particle(g);
+    if(boundarySpacing<mouseX && mouseX<width-boundarySpacing && mouseY>boundarySpacing && mouseY<height-boundarySpacing){
     particle.update(mouseX, mouseY);
     particle.show();
     particle.look(walls);
+    }
     }
     textSize(15);
     fill(50);
