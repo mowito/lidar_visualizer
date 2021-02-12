@@ -1,15 +1,5 @@
 [
-    {
-        "name": "Sick TIM561-2050101",
-        "Dimension" : "2D",
-        "Detection Distance" : "10 m",
-        "Accuracy" : "± 60mm",
-        "Angular range" : "270",
-        "steps" : "818",
-        "Angular resolution" : "0.33",
-        "scanning frequency (Max)" : "15 Hz",
-        "ROS Compatible" : "yes"
-    },
+
     
     {
         "name": "Sick LMS111",
