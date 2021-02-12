@@ -12,32 +12,54 @@
     },
     
     {
-        "name": "Sick LMS511-10100 Pro",
+        "name": "Sick LMS111",
         "Dimension" : "2D",
-        "Detection Distance" : "80 m",
-        "Accuracy" : "± 25mm",
-        "Angular range" : "190",
-        "steps" : "1137",
-        "Angular resolution" : "1",
-        "scanning frequency (Max)" : "100 Hz",
-        "ROS Compatible" : "yes"
+        "Detection Distance" : "20 m",
+        "Detection Distance (min)" : "0.5 m",
+        "Accuracy" : "±30 mm",
+        "Angular range" : "270",
+        "Angular resolution" : "0.5",
+        "scanning frequency (Max)" : "50 Hz"
     },
 
     {
-        "name": "YDLIDAR G4",
-        "Detection Distance" : "16 m",
-        "Accuracy" : "distance < 2.0m: < 0.5mm distance > 2.0m: < 1%",
-        "Angular range" : "360",
-        "Angular resolution" : "0.3",
-        "scanning frequency" : "5 ~ 12 Hz"
-        
+        "name": "Sick LMS151",
+        "Dimension" : "2D",
+        "Detection Distance" : "50 m",
+        "Detection Distance (min)" : "0.5 m",
+        "Accuracy" : "±30 mm",
+        "Angular range" : "270",
+        "Angular resolution" : "0.5",
+        "scanning frequency (Max)" : "50 Hz"
     },
+
+    {
+        "name": "Sick LMS500 Lite",
+        "Dimension" : "2D",
+        "Detection Distance" : "80 m",
+        "Accuracy" : "±35 mm",
+        "Angular range" : "190",
+        "Angular resolution" : "1",
+        "scanning frequency (Max)" : "75 Hz"
+    },
+
+    {
+        "name": "Hokoyu UTM-30LX-EW",
+        "Detection Distance" : "30 m",
+        "Detection Distance (min)" : "0.1 m",
+        "Accuracy" : "±50 mm",
+        "Angular range" : "270",
+        "Angular resolution" : "0.25",
+        "scanning frequency" : "40 Hz"
+    },
+
     {
         "name": "Hokoyu UST-20LX",
         "Detection Distance" : "20 m",
-        "Accuracy" : "±40mm",
+        "Detection Distance (min)" : "0.06 m",
+        "Accuracy" : "±40 mm",
         "Angular range" : "270",
-        "Angular resolution" : "0.2",
+        "Angular resolution" : "0.25",
         "scanning frequency" : "40 Hz"
     }
     
