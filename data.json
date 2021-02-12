@@ -7,9 +7,9 @@
         "Detection Distance" : "20 m",
         "Detection Distance (min)" : "0.5 m",
         "Accuracy" : "±30 mm",
-        "Angular range" : "270",
-        "Angular resolution" : "0.5",
-        "scanning frequency (Max)" : "50 Hz"
+        "Angular Range" : "270",
+        "Angular Resolution" : "0.5",
+        "Scanning Frequency (Max)" : "50 Hz"
     },
 
     {
@@ -18,9 +18,9 @@
         "Detection Distance" : "50 m",
         "Detection Distance (min)" : "0.5 m",
         "Accuracy" : "±30 mm",
-        "Angular range" : "270",
-        "Angular resolution" : "0.5",
-        "scanning frequency (Max)" : "50 Hz"
+        "Angular Range" : "270",
+        "Angular Resolution" : "0.5",
+        "Scanning Frequency (Max)" : "50 Hz"
     },
 
     {
@@ -28,9 +28,9 @@
         "Dimension" : "2D",
         "Detection Distance" : "80 m",
         "Accuracy" : "±35 mm",
-        "Angular range" : "190",
-        "Angular resolution" : "1",
-        "scanning frequency (Max)" : "75 Hz"
+        "Angular Range" : "190",
+        "Angular Resolution" : "1",
+        "Scanning Frequency (Max)" : "75 Hz"
     },
 
     {
@@ -38,9 +38,9 @@
         "Detection Distance" : "30 m",
         "Detection Distance (min)" : "0.1 m",
         "Accuracy" : "±50 mm",
-        "Angular range" : "270",
-        "Angular resolution" : "0.25",
-        "scanning frequency" : "40 Hz"
+        "Angular Range" : "270",
+        "Angular Resolution" : "0.25",
+        "Scanning Frequency" : "40 Hz"
     },
 
     {
@@ -48,9 +48,9 @@
         "Detection Distance" : "20 m",
         "Detection Distance (min)" : "0.06 m",
         "Accuracy" : "±40 mm",
-        "Angular range" : "270",
-        "Angular resolution" : "0.25",
-        "scanning frequency" : "40 Hz"
+        "Angular Range" : "270",
+        "Angular Resolution" : "0.25",
+        "Scanning Frequency" : "40 Hz"
     }
     
 
