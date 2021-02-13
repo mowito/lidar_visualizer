@@ -7,6 +7,8 @@ defaultOption.text = 'Choose Lidar Type';
 dropdown.add(defaultOption);
 dropdown.selectedIndex = 0;
 
+console.log("test....sourabh58");
+
 var request;
 
 request = new XMLHttpRequest();
