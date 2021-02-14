@@ -47,7 +47,9 @@ body{
 /* Main------------------------------------- */
 main{
     display: flex;
-    justify-content: space-around;
+    /* justify-content: space-around; */
+    /* display: grid; */
+    /* grid-template-columns: 1fr 2.5fr; */
 }
 
 /* Info Card-------------------- */
@@ -77,6 +79,9 @@ main{
 }
 
 /* Dashbord-------------------- */
+.rightcontaner{
+    width: 100%;
+}
 .dashbord{
     display: flex;
     justify-content: space-between;
@@ -87,7 +92,7 @@ main{
     padding: 10px;
     border-radius: .5rem;
     height: 20%;
-    width: 100%;
+    /* width: 100%; */
 
     color: #17191A;
 }
@@ -157,4 +162,15 @@ input[type=number] {
 
 #reset{
     background-color: #42B5D3;
+}
+
+/* Canves----------------- */
+.canvesCard{
+    margin: 20px;
+    padding: 10px;
+    background-color: white;
+    border-radius: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

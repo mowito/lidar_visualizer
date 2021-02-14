@@ -22,7 +22,7 @@ function setup() {
     cnv.parent(canvesdiv);
     cnv.mouseClicked(createwalls);
     // cnv.position(280,130);
-    cnv.position(350,130);
+    // cnv.position(350,130);
     walls.push(new Boundary(boundarySpacing, boundarySpacing, width-boundarySpacing, boundarySpacing));
     walls.push(new Boundary(width-boundarySpacing, boundarySpacing, width-boundarySpacing, height-boundarySpacing));
    walls.push(new Boundary(width-boundarySpacing, height-boundarySpacing, boundarySpacing, height-boundarySpacing));
