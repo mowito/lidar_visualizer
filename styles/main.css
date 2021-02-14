@@ -1,0 +1,160 @@
+/* Default--------------------------------- */
+*{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+body{
+    font-size:16px;
+    font-family: 'Segoe UI';
+    min-height: 100vh;
+    background-color: #17191A;
+    color: white;
+}
+
+/* Header---------------------------------- */
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F27935;
+    color: white;
+}
+.logo{
+    margin-left: 3.5rem;
+}
+.logo img{
+    width: 95px;
+}
+
+.navbar ul{
+    display: flex;
+}
+.navbar li{
+    list-style: none;
+}
+.navbar a{
+    text-decoration: none;
+    color: black;
+    padding: 1rem;
+    font-size: 20px;
+}
+.navbar a:hover{
+    color: white;
+}
+
+/* Main------------------------------------- */
+main{
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Info Card-------------------- */
+.infoCard{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255, 0.5);
+
+    margin: 20px;
+    padding: 10px;
+    border-radius: .5rem;
+    width: 35%;
+
+    color: #17191A;
+}
+
+.infoCard select{
+    background-color: rgb(255, 255, 255, 0);
+    color: #F27935;
+    font-size: 150%;
+    margin: 5px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+.infoCard select:hover{
+    color: black;
+}
+
+/* Dashbord-------------------- */
+.dashbord{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(255, 255, 255, 0.5);
+
+    margin: 20px;
+    padding: 10px;
+    border-radius: .5rem;
+    height: 20%;
+    width: 100%;
+
+    color: #17191A;
+}
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    margin: 5px;
+    color: #F27935;
+}
+
+.input{
+    display: flex;
+}
+
+.inputbox{
+    color: rgba(23, 25, 26, 0.5);
+}
+
+.input input{
+    color: rgba(23, 25, 26, 0.5);
+    background-color: rgb(255, 255, 255, 0);
+    text-align: center;
+    width: 3rem;
+}
+
+.input input:hover,.inputbox:hover{
+    color: #F27935;
+}
+
+.input label{
+    flex-grow: 1;
+}
+
+/* To remove updown arrows for  Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+.controls{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+#play,#reset{
+    color:rgba(23, 25, 26);
+    padding: 5px;
+    margin: 10px;
+    width: 70px;
+    border-radius: .5rem;
+    font-size: 120%;
+    background-color: #5ACA5A;
+}
+#play:hover,#reset:hover{
+    color: white;
+}
+
+#reset{
+    background-color: #42B5D3;
+}
