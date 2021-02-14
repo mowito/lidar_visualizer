@@ -17,7 +17,7 @@ let len = 150;
 
 function setup() {
     // cnv = createCanvas(windowWidth-300, windowHeight-130);
-    cnv = createCanvas(windowWidth-380, windowHeight-130);
+    cnv = createCanvas(windowWidth-500, windowHeight-120);
     // Parent div for ccanves ----------------
     cnv.parent(canvesdiv);
     cnv.mouseClicked(createwalls);
