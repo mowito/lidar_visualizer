@@ -72,7 +72,14 @@ function angle(){
     
 }
 function createwalls(){
+    let start = millis();
 
+    // Do the stuff that you want to time
+    random(0, 100);
+    
+    let end = millis();
+    let elapsed = end - start;
+    console.log("This took: " + elapsed + "ms.")
     if(f==false){
         
     if(drawing===false){
@@ -92,7 +99,7 @@ function createwalls(){
 }
 function draw() {
     background(255);
-    
+ 
     if(drawing==true){
         
         line(x1,y1,mouseX,mouseY);
@@ -123,50 +130,24 @@ function draw() {
     if(document.getElementById("breadth").value!=""){
     breadth = parseInt(document.getElementById("breadth").value);
     }
-    len = (235/500)*breadth;
-    text(len+"m",width-boundarySpacing+10,boundarySpacing);
-    text(len/2+"m",width-boundarySpacing+10,(height-boundarySpacing)/2)
-    text("0m",width-boundarySpacing+10,(height-boundarySpacing));
-    textSize(13);
-    text(len/4+"m",width-boundarySpacing+10,(height-boundarySpacing)*(3/4));
-    text(len*3/4 + "m",width-boundarySpacing+10,(height-boundarySpacing)/4);
+    
     textSize(15);
+    text(0 + "m",(width-boundarySpacing),height-boundarySpacing+20);
     text(breadth/4 + "m",(width-boundarySpacing)*(3/4),height-boundarySpacing+20);
     text(breadth/2+"m",(width-boundarySpacing)/2,height-boundarySpacing+20);
     text(breadth*3/4+"m",(width-boundarySpacing)/4,height-boundarySpacing+20);
     text(breadth+"m",boundarySpacing,height-boundarySpacing+20);
     stroke(0);
-    textSize(30);
-    text("-",width-boundarySpacing-5,((height-boundarySpacing)*(250-15.625))/250);
-    text("-",width-boundarySpacing-5,((height-boundarySpacing)*(250-2*15.625))/250);
-    text("-",width-boundarySpacing-5,((height-boundarySpacing)*(250-3*15.625))/250);
-    text("-",width-boundarySpacing-5,((height-boundarySpacing)*(250-5*15.625))/250);
-    text("-",width-boundarySpacing-5,((height-boundarySpacing)*(250-6*15.625))/250);
-    text("-",width-boundarySpacing-5,((height-boundarySpacing)*(250-7*15.625))/250);
-    text("-",width-boundarySpacing-5,((height-boundarySpacing)*(250-9*15.625))/250);
-    text("-",width-boundarySpacing-5,((height-boundarySpacing)*(250-10*15.625))/250);
-    text("-",width-boundarySpacing-5,((height-boundarySpacing)*(250-11*15.625))/250);
-    text("-",width-boundarySpacing-5,((height-boundarySpacing)*(250-13*15.625))/250);
-    text("-",width-boundarySpacing-5,((height-boundarySpacing)*(250-14*15.625))/250);
+
+   
     
+    
+    var i;
+    for(i=1;i<20;i++){
     textSize(20);
-    text("|",(width-boundarySpacing)*19/20,height-boundarySpacing+10);
-    text("|",(width-boundarySpacing)*18/20,height-boundarySpacing+10);
-    text("|",(width-boundarySpacing)*17/20,height-boundarySpacing+10);
-    text("|",(width-boundarySpacing)*16/20,height-boundarySpacing+10);
-    text("|",(width-boundarySpacing)*14/20,height-boundarySpacing+10);
-    text("|",(width-boundarySpacing)*13/20,height-boundarySpacing+10);
-    text("|",(width-boundarySpacing)*12/20,height-boundarySpacing+10);
-    text("|",(width-boundarySpacing)*11/20,height-boundarySpacing+10);
-    text("|",(width-boundarySpacing)*9/20,height-boundarySpacing+10);
-    text("|",(width-boundarySpacing)*8/20,height-boundarySpacing+10);
-    text("|",(width-boundarySpacing)*7/20,height-boundarySpacing+10);
-    text("|",(width-boundarySpacing)*6/20,height-boundarySpacing+10);
-    text("|",(width-boundarySpacing)*4/20,height-boundarySpacing+10);
-    text("|",(width-boundarySpacing)*3/20,height-boundarySpacing+10);
-    text("|",(width-boundarySpacing)*2/20,height-boundarySpacing+10);
-    text("|",(width-boundarySpacing)*1/20,height-boundarySpacing+10);
+    text("|",(width-boundarySpacing)*i/20,height-boundarySpacing+10);
     
+    }
         
     
     
