@@ -1,6 +1,8 @@
 const canvesdiv = document.querySelector('.canvesCard');
 
 let walls = [];
+let rects = [];
+let circles = [];
 let ray;
 let particle;
 let xoff = 0;
@@ -8,21 +10,22 @@ let yoff = 10000;
 // let boundarySpacing = 60;
 let boundarySpacing = 50 ;
 let f = false;
-let drawing = false;
+let drawingline = false;
 let x1,x2,y1,y2;
 let s;
 let g=1;
 let cnv;
 let len = 150;
-
 let mazerLines = 15; // the lines for the x and y axis scale
+
+let tool =0
 
 function setup() {
     // cnv = createCanvas(windowWidth-300, windowHeight-130);
     cnv = createCanvas(canvesdiv.offsetWidth, canvesdiv.offsetWidth*(9/16)); // seting the canves to 16:9 depending on the avlibel width
     // Parent div for ccanves ----------------
     cnv.parent(canvesdiv);
-    cnv.mouseClicked(createwalls);
+    cnv.mouseClicked(toolfunction);
     // cnv.position(280,130);
     // cnv.position(350,130);
     walls.push(new Boundary(boundarySpacing, boundarySpacing, width-boundarySpacing, boundarySpacing));
@@ -35,6 +38,24 @@ function setup() {
     
 
 }
+
+function toolfunction(){
+    switch (tool) {
+        case 0:
+            createwalls()
+            break;
+        case 1:
+            createrect()
+            break;
+        case 2:
+            createcircle()
+            break;
+    
+        default:
+            break;
+    }
+}
+
 function play(){
     var elem = document.getElementById("play");
     if(elem.value=="Play"){
@@ -51,6 +72,8 @@ function play(){
 }
 function reset(){
     walls = [];
+    rects = [];
+    circles = [];
     f = false;
     var elem = document.getElementById("play");
     elem.value = "Play";
@@ -62,7 +85,7 @@ function reset(){
     elem2.value = "250";
     range = 100000;
     document.getElementById("angrange").value = "360";
-    drawing = false;
+    drawingline = false;
     walls.push(new Boundary(boundarySpacing, boundarySpacing, width-boundarySpacing, boundarySpacing));
     walls.push(new Boundary(width-boundarySpacing, boundarySpacing, width-boundarySpacing, height-boundarySpacing));
     walls.push(new Boundary(width-boundarySpacing, height-boundarySpacing, boundarySpacing, height-boundarySpacing));
@@ -77,21 +100,47 @@ function angle(){
     g = e.value;
     
 }
+
+function selecttools(t){
+    const linebtn=document.querySelector("#line")
+    const rectbtn=document.querySelector("#rect")
+    const circlebtn=document.querySelector("#circle")
+     
+    linebtn.classList.remove('toolseleted');
+    rectbtn.classList.remove('toolseleted');
+    circlebtn.classList.remove('toolseleted');
+    tool=t;
+
+    switch (t) {
+        case 0:
+            linebtn.classList.add('toolseleted');
+            break;
+        case 1:
+            rectbtn.classList.add('toolseleted');
+            break;
+        case 2:
+            circlebtn.classList.add('toolseleted');
+            break;
+    
+        default:
+            break;
+    }
+}
+
+//to crate lines
 function createwalls(){
 
     if(f==false){
         
-    if(drawing===false){
+    if(drawingline===false){
         x1 = mouseX;
         y1 = mouseY;
-        drawing = true;
-        
-
+        drawingline = true;
     }
     else{
         x2 = mouseX;
         y2 = mouseY;
-        drawing = false;
+        drawingline = false;
         
         var isinside = boundarySpacing<mouseX && mouseX<width-boundarySpacing && mouseY>boundarySpacing && mouseY<height-boundarySpacing
         if(isinside){
@@ -100,12 +149,70 @@ function createwalls(){
     }
 }
 }
+//create reactrangles
+function createrect(){
+
+    if(f==false){
+        
+    if(drawingline===false){
+        x1 = mouseX;
+        y1 = mouseY;
+        drawingline = true;
+    }
+    else{
+        x2 = mouseX;
+        y2 = mouseY;
+        drawingline = false;
+        
+        var isinside = boundarySpacing<mouseX && mouseX<width-boundarySpacing && mouseY>boundarySpacing && mouseY<height-boundarySpacing
+        if(isinside){
+            rects.push(new Rectrangle(x1,y1,x2-x1,y2-y1));
+        }
+    }
+}
+}
+//create circless
+function createcircle(){
+
+    if(f==false){
+        
+    if(drawingline===false){
+        x1 = mouseX;
+        y1 = mouseY;
+        drawingline = true;
+    }
+    else{
+        x2 = mouseX;
+        y2 = mouseY;
+        drawingline = false;
+        
+        var isinside = boundarySpacing<mouseX && mouseX<width-boundarySpacing && mouseY>boundarySpacing && mouseY<height-boundarySpacing
+        if(isinside){
+            circles.push(new Circle(x1,y1,2*Math.sqrt(Math.pow(x2-x1,2)+Math.pow(y2-y1,2))));
+        }
+    }
+}
+}
+
+
 function draw() {
     background(255);
     
-    if(drawing==true){
+    if(drawingline==true){
+        switch (tool) {
+            case 0:
+                line(x1,y1,mouseX,mouseY);
+                break;
+            case 1:
+                rect(x1, y1, mouseX-x1, mouseY-y1)
+                break;
+            case 2:
+                circle(x1, y1, 2*Math.sqrt(Math.pow(mouseX-x1,2)+Math.pow(mouseY-y1,2)));
+                break;
         
-        line(x1,y1,mouseX,mouseY);
+            default:
+                break;
+        } 
     }
     
     
@@ -113,8 +220,12 @@ function draw() {
     for (let wall of walls) {
         wall.show();
     }
-    
-    
+    for (let wall of rects) {
+        wall.show();
+    }
+    for (let wall of circles) {
+        wall.show();
+    }
     
     
     if(f==true){
@@ -125,7 +236,7 @@ function draw() {
         if(boundarySpacing<mouseX && mouseX<width-boundarySpacing && mouseY>boundarySpacing && mouseY<height-boundarySpacing){
             particle.update(mouseX, mouseY);
             particle.show();
-            particle.look(walls);
+            particle.look(tool,walls,rects,circles);
         }
     }
     textSize(12);

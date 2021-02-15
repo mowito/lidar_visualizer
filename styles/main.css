@@ -140,6 +140,33 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+/* Tools------- */
+.tootls{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.tool{
+    margin: 15px;
+    padding: 10px;
+    border-radius: .5rem;
+    font-size: 300%;
+    width: 100px;
+    height: 100px;
+    background-color: #F27935;
+    opacity: .5;
+}
+
+.tool:hover{
+    opacity: 1;
+    color: white;
+}
+
+.toolseleted{
+    opacity: 1;
+    color: black;
+}
+
 
 .controls{
     display: flex;

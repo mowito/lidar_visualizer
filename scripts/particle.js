@@ -45,7 +45,7 @@ class Particle {
         this.pos.set(x, y);
     }
 
-    look(walls) {
+    look(t,walls,rects,circles) {
         
         for (let i = 0; i < this.rays.length; i++) {
             
@@ -62,7 +62,7 @@ class Particle {
             var vec = p5.Vector.fromAngle(ray.angle,length);
 
             for (let wall of walls) {
-                const pt = ray.cast(wall);
+                const pt = ray.cast2(0,wall);
                 if (pt) {
                     const d = p5.Vector.dist(this.pos, pt);
                     if (d < record) {
@@ -72,6 +72,31 @@ class Particle {
     
                 }
             }
+            //new code--------------------
+            for (let wall of rects) {
+                const pt = ray.cast2(1,wall);
+                if (pt) {
+                    const d = p5.Vector.dist(this.pos, pt);
+                    if (d < record) {
+                        console.log(d);
+                        record = d;
+                        closest = pt;
+                    }
+    
+                }
+            }
+            for (let wall of circles) {
+                const pt = ray.cast2(2,wall);
+                if (pt) {
+                    const d = p5.Vector.dist(this.pos, pt);
+                    if (d < record) {
+                        record = d;
+                        closest = pt;
+                    }
+    
+                }
+            }
+            //new code--------------------end
             let pos1 = this.pos.x+vec.x;
             let pos2 = this.pos.y + vec.y;
             let p = createVector();
@@ -97,8 +122,8 @@ class Particle {
     show() {
         fill(255);
         ellipse(this.pos.x, this.pos.y, 4);
-        for (let ray of this.rays) {
-            ray.show();
-        }
+        // for (let ray of this.rays) {
+        //     ray.show();
+        // }
     }
 }

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- <link rel="stylesheet" href="styles.css"> -->
     <link rel="stylesheet" href="styles/main.css">
     <meta charset="UTF-8" />
@@ -79,7 +80,10 @@
           </div>
         </div>
         <div class="tools">
-          <p>Tools comming soon</p>
+          <i class="fas fa-horizontal-rule"></i>
+          <button id="line" onclick="selecttools(0)" class="tool toolseleted"><i class="fa fa-arrows-v"></i></button>
+          <button id="rect" onclick="selecttools(1)" class="tool"><i class="fa fa-square"></i></button>
+          <button id="circle" onclick="selecttools(2)" class="tool"><i class="fa fa-circle"></i></button>
         </div>
         <div class="controls">
           <input type="button" id="play" onclick="play()" value="Play" class="playbutton" ></input>
@@ -94,7 +98,14 @@
     <script src="scripts/script.js"></script>
     <script src="scripts/sketch.js"></script>   
     <script src="scripts/ray.js"></script>
-    <script src="scripts/boundary.js"></script>
+    <script src="scripts/shapes.js"></script>
     <script src="scripts/particle.js"></script>
+    <script src="p5.collide_lib/p5.collide2d.js"></script>
+
+    <!-- new script for js -->
+    <!-- <script src="scripts/canvas/sketch.js"></script>
+    <script src="scripts/canvas/opstical.js"></script>
+    <script src="scripts/canvas/ray.js"></script>
+    <script src="scripts/canvas/partical.js"></script> -->
   </body>
 </html>
