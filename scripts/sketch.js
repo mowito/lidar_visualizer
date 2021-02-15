@@ -17,7 +17,7 @@ let len = 150;
 
 function setup() {
     // cnv = createCanvas(windowWidth-300, windowHeight-130);
-    cnv = createCanvas(windowWidth-500, windowHeight-120);
+    cnv = createCanvas(canvesdiv.offsetWidth, canvesdiv.offsetWidth*(9/16)); // seting the canves to 16:9 depending on the avlibel width
     // Parent div for ccanves ----------------
     cnv.parent(canvesdiv);
     cnv.mouseClicked(createwalls);
@@ -90,7 +90,11 @@ function createwalls(){
         x2 = mouseX;
         y2 = mouseY;
         drawing = false;
-        walls.push(new Boundary(x1,y1,x2,y2));
+        
+        var isinside = boundarySpacing<mouseX && mouseX<width-boundarySpacing && mouseY>boundarySpacing && mouseY<height-boundarySpacing
+        if(isinside){
+            walls.push(new Boundary(x1,y1,x2,y2));
+        }
     }
 }
 }
