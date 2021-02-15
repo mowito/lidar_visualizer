@@ -15,6 +15,8 @@ let g=1;
 let cnv;
 let len = 150;
 
+let mazerLines = 15; // the lines for the x and y axis scale
+
 function setup() {
     // cnv = createCanvas(windowWidth-300, windowHeight-130);
     cnv = createCanvas(canvesdiv.offsetWidth, canvesdiv.offsetWidth*(9/16)); // seting the canves to 16:9 depending on the avlibel width
@@ -112,76 +114,45 @@ function draw() {
         wall.show();
     }
     
-   
-        
-     
+    
+    
+    
     if(f==true){
-    if(document.getElementById("angle").value!=""){
-    g = parseFloat(document.getElementById("angle").value);
+        if(document.getElementById("angle").value!=""){
+            g = parseFloat(document.getElementById("angle").value);
+        }
+        particle = new Particle(g);
+        if(boundarySpacing<mouseX && mouseX<width-boundarySpacing && mouseY>boundarySpacing && mouseY<height-boundarySpacing){
+            particle.update(mouseX, mouseY);
+            particle.show();
+            particle.look(walls);
+        }
     }
-    particle = new Particle(g);
-    if(boundarySpacing<mouseX && mouseX<width-boundarySpacing && mouseY>boundarySpacing && mouseY<height-boundarySpacing){
-    particle.update(mouseX, mouseY);
-    particle.show();
-    particle.look(walls);
-    }
-    }
-    textSize(15);
+    textSize(12);
     fill(50);
     if(document.getElementById("breadth").value!=""){
-    breadth = parseInt(document.getElementById("breadth").value);
+        breadth = parseInt(document.getElementById("breadth").value);
     }
     len = (235/500)*breadth;
-    text(len+"m",width-boundarySpacing+10,boundarySpacing);
-    text(len/2+"m",width-boundarySpacing+10,(height-boundarySpacing)/2)
-    text("0m",width-boundarySpacing+10,(height-boundarySpacing));
-    textSize(13);
-    text(len/4+"m",width-boundarySpacing+10,(height-boundarySpacing)*(3/4));
-    text(len*3/4 + "m",width-boundarySpacing+10,(height-boundarySpacing)/4);
-    textSize(15);
-    text(breadth/4 + "m",(width-boundarySpacing)*(3/4),height-boundarySpacing+20);
-    text(breadth/2+"m",(width-boundarySpacing)/2,height-boundarySpacing+20);
-    text(breadth*3/4+"m",(width-boundarySpacing)/4,height-boundarySpacing+20);
-    text(breadth+"m",boundarySpacing,height-boundarySpacing+20);
-    stroke(0);
-    textSize(30);
-    text("-",width-boundarySpacing-5,((height-boundarySpacing)*(250-15.625))/250);
-    text("-",width-boundarySpacing-5,((height-boundarySpacing)*(250-2*15.625))/250);
-    text("-",width-boundarySpacing-5,((height-boundarySpacing)*(250-3*15.625))/250);
-    text("-",width-boundarySpacing-5,((height-boundarySpacing)*(250-5*15.625))/250);
-    text("-",width-boundarySpacing-5,((height-boundarySpacing)*(250-6*15.625))/250);
-    text("-",width-boundarySpacing-5,((height-boundarySpacing)*(250-7*15.625))/250);
-    text("-",width-boundarySpacing-5,((height-boundarySpacing)*(250-9*15.625))/250);
-    text("-",width-boundarySpacing-5,((height-boundarySpacing)*(250-10*15.625))/250);
-    text("-",width-boundarySpacing-5,((height-boundarySpacing)*(250-11*15.625))/250);
-    text("-",width-boundarySpacing-5,((height-boundarySpacing)*(250-13*15.625))/250);
-    text("-",width-boundarySpacing-5,((height-boundarySpacing)*(250-14*15.625))/250);
-    
-    textSize(20);
-    text("|",(width-boundarySpacing)*19/20,height-boundarySpacing+10);
-    text("|",(width-boundarySpacing)*18/20,height-boundarySpacing+10);
-    text("|",(width-boundarySpacing)*17/20,height-boundarySpacing+10);
-    text("|",(width-boundarySpacing)*16/20,height-boundarySpacing+10);
-    text("|",(width-boundarySpacing)*14/20,height-boundarySpacing+10);
-    text("|",(width-boundarySpacing)*13/20,height-boundarySpacing+10);
-    text("|",(width-boundarySpacing)*12/20,height-boundarySpacing+10);
-    text("|",(width-boundarySpacing)*11/20,height-boundarySpacing+10);
-    text("|",(width-boundarySpacing)*9/20,height-boundarySpacing+10);
-    text("|",(width-boundarySpacing)*8/20,height-boundarySpacing+10);
-    text("|",(width-boundarySpacing)*7/20,height-boundarySpacing+10);
-    text("|",(width-boundarySpacing)*6/20,height-boundarySpacing+10);
-    text("|",(width-boundarySpacing)*4/20,height-boundarySpacing+10);
-    text("|",(width-boundarySpacing)*3/20,height-boundarySpacing+10);
-    text("|",(width-boundarySpacing)*2/20,height-boundarySpacing+10);
-    text("|",(width-boundarySpacing)*1/20,height-boundarySpacing+10);
-    
-        
-    
-    
-        
-    
 
+    //drawing markers the better way
+    let spacing = ((width-boundarySpacing*2)/20);
+    for (let index = 0; index < 20; index++) {
+        if(index%2!==0)
+        line(width-boundarySpacing-index*spacing,height-boundarySpacing,width-boundarySpacing-index*spacing,height-boundarySpacing+mazerLines);
+        else
+        line(width-boundarySpacing-index*spacing,height-boundarySpacing,width-boundarySpacing-index*spacing,height-boundarySpacing+mazerLines-8);
+        if(index%2!==0)
+        text(((breadth/20)*index)+"m",width-boundarySpacing-index*spacing,height-boundarySpacing+25);
+        
+        if(index<=10){
 
-    //xoff += 0.01;
-    //yoff += 0.01;
+            if(index%2!==0)
+            line(width-boundarySpacing,height-boundarySpacing-index*spacing,width-boundarySpacing+mazerLines,height-boundarySpacing-index*spacing);
+            else
+            line(width-boundarySpacing,height-boundarySpacing-index*spacing,width-boundarySpacing+mazerLines-8,height-boundarySpacing-index*spacing);
+            if(index%2!==0)
+            text(((breadth/20)*index)+"m",width-boundarySpacing+5,height-boundarySpacing-index*spacing);
+        }
+    }
 }
