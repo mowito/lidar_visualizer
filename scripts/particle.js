@@ -54,6 +54,7 @@ class Particle {
             let record = Infinity;
             if(document.getElementById("range").value!=""){
             range = parseInt(document.getElementById("range").value);
+            // range = document.getElementById("range").value;
             }
             if(document.getElementById("breadth").value != ""){
                 breadth = parseInt(document.getElementById("breadth").value);
@@ -98,21 +99,27 @@ class Particle {
                 }
             }
             //new code--------------------end
-            let pos1 = this.pos.x+vec.x;
-            let pos2 = this.pos.y + vec.y;
-            let p = createVector();
-            p.x = pos1;
-            p.y = pos2;
-            const d1 = p5.Vector.dist(this.pos,p);
-            if (d1>record) {
+            // let pos1 = this.pos.x+vec.x;
+            // let pos2 = this.pos.y + vec.y;
+            // let p = createVector();
+            // p.x = pos1;
+            // p.y = pos2;
+            // const d1 = this.pos.dist(p);
+            if (length>=record) {
                 // colorMode(HSB);
                 // stroke((i + frameCount * 2) % 360, 255, 255, 50);
                 stroke(color(0, 0, 255));
                 line(this.pos.x, this.pos.y, closest.x, closest.y);
             }
-            else if(d1<=record){
+            else{
                 stroke(color(0, 0, 255));
-                line(this.pos.x,this.pos.y,p.x,p.y);
+                let m=length;
+                let n= (Math.sqrt(Math.pow(this.pos.x-closest.x,2)+Math.pow(this.pos.y-closest.y,2)))-m;
+
+                let x = (m*closest.x + n*this.pos.x)/(m + n);
+                let y = (m*closest.y + n*this.pos.y)/(m + n);
+                line(this.pos.x, this.pos.y, x, y);
+                
             }
             
         
