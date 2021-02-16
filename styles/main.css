@@ -194,7 +194,7 @@ input[type=number] {
 /* Canves----------------- */
 .canvesCard{
     margin: 20px;
-    padding: 10px;
+    /* padding: 5px; */
     background-color: white;
     border-radius: .5rem;
     display: flex;

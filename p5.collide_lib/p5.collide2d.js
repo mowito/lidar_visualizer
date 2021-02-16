@@ -187,8 +187,8 @@ p5.prototype.collideLineCircle = function( x1,  y1,  x2,  y2,  cx,  cy,  diamete
   //   return true;
   // }
   // return false;
-  if (distance <= (diameter/2)-.01) {
-    return {x:closestX,y:closestY};
+  if (distance <= (diameter/2)) {
+    return true
   }
   return false;
 }

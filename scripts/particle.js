@@ -61,8 +61,9 @@ class Particle {
             var length = ((width-2*boundarySpacing)/breadth)*range;
             var vec = p5.Vector.fromAngle(ray.angle,length);
 
+            let pt=createVector();
             for (let wall of walls) {
-                const pt = ray.cast2(0,wall);
+                pt = ray.cast2(0,wall);
                 if (pt) {
                     const d = p5.Vector.dist(this.pos, pt);
                     if (d < record) {
@@ -74,11 +75,11 @@ class Particle {
             }
             //new code--------------------
             for (let wall of rects) {
-                const pt = ray.cast2(1,wall);
+                pt = ray.cast2(1,wall);
                 if (pt) {
-                    const d = p5.Vector.dist(this.pos, pt);
+                    // console.log(pt);
+                    const d = this.pos.dist(pt);
                     if (d < record) {
-                        console.log(d);
                         record = d;
                         closest = pt;
                     }
@@ -86,9 +87,9 @@ class Particle {
                 }
             }
             for (let wall of circles) {
-                const pt = ray.cast2(2,wall);
+                pt = ray.cast2(2,wall);
                 if (pt) {
-                    const d = p5.Vector.dist(this.pos, pt);
+                    const d = this.pos.dist(pt);
                     if (d < record) {
                         record = d;
                         closest = pt;

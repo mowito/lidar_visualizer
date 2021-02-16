@@ -166,7 +166,7 @@ function createrect(){
         
         var isinside = boundarySpacing<mouseX && mouseX<width-boundarySpacing && mouseY>boundarySpacing && mouseY<height-boundarySpacing
         if(isinside){
-            rects.push(new Rectrangle(x1,y1,x2-x1,y2-y1));
+            rects.push(new Rectrangle(x1,y1,Math.sqrt(Math.pow(x2-x1,2)+Math.pow(y2-y1,2))));
         }
     }
 }
@@ -204,7 +204,9 @@ function draw() {
                 line(x1,y1,mouseX,mouseY);
                 break;
             case 1:
-                rect(x1, y1, mouseX-x1, mouseY-y1)
+                let radius=Math.sqrt(Math.pow(mouseX-x1,2)+Math.pow(mouseY-y1,2));
+                square(x1 - radius, y1 - radius, radius*2);
+                // square(x1, y1, Math.sqrt(Math.pow(mouseX-x1,2)+Math.pow(mouseY-y1,2)));
                 break;
             case 2:
                 circle(x1, y1, 2*Math.sqrt(Math.pow(mouseX-x1,2)+Math.pow(mouseY-y1,2)));
