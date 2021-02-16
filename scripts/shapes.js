@@ -1,3 +1,4 @@
+//line-----------------------------------------------
 class Boundary {
     constructor(x1, y1, x2, y2) {
         this.a = createVector(x1, y1);
@@ -10,17 +11,20 @@ class Boundary {
     }
 }
 
+//Rectrangle------------------------------
 class Rectrangle{
-    constructor(x, y, d){
+    constructor(x, y, radius){
         this.x=x;
         this.y=y;
-        this.radius=d;
+        this.radius=radius;
     }
 
     show(){
         square(this.x - this.radius, this.y - this.radius, this.radius*2);
     }
 }
+
+//circle----------------------------------
 class Circle{
     constructor(x,y,d){
         this.x=x;

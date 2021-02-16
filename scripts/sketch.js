@@ -7,7 +7,6 @@ let ray;
 let particle;
 let xoff = 0;
 let yoff = 10000;
-// let boundarySpacing = 60;
 let boundarySpacing = 50 ;
 let f = false;
 let drawingline = false;
@@ -21,24 +20,18 @@ let mazerLines = 15; // the lines for the x and y axis scale
 let tool =0
 
 function setup() {
-    // cnv = createCanvas(windowWidth-300, windowHeight-130);
     cnv = createCanvas(canvesdiv.offsetWidth, canvesdiv.offsetWidth*(9/16)); // seting the canves to 16:9 depending on the avlibel width
-    // Parent div for ccanves ----------------
+    // Parent div for canves ----------------
     cnv.parent(canvesdiv);
     cnv.mouseClicked(toolfunction);
-    // cnv.position(280,130);
-    // cnv.position(350,130);
     walls.push(new Boundary(boundarySpacing, boundarySpacing, width-boundarySpacing, boundarySpacing));
     walls.push(new Boundary(width-boundarySpacing, boundarySpacing, width-boundarySpacing, height-boundarySpacing));
-   walls.push(new Boundary(width-boundarySpacing, height-boundarySpacing, boundarySpacing, height-boundarySpacing));
+    walls.push(new Boundary(width-boundarySpacing, height-boundarySpacing, boundarySpacing, height-boundarySpacing));
     walls.push(new Boundary(boundarySpacing, height-boundarySpacing, boundarySpacing, boundarySpacing));
-    //console.log(width);
-    //console.log(height);
-    
-    
 
 }
 
+// To switch betwin shapes--------------------------
 function toolfunction(){
     switch (tool) {
         case 0:
@@ -101,6 +94,7 @@ function angle(){
     
 }
 
+//get the tool form doc and update buttion style------------------
 function selecttools(t){
     const linebtn=document.querySelector("#line")
     const rectbtn=document.querySelector("#rect")
@@ -127,7 +121,7 @@ function selecttools(t){
     }
 }
 
-//to crate lines
+//to crate lines----------------------------------
 function createwalls(){
 
     if(f==false){
@@ -149,7 +143,7 @@ function createwalls(){
     }
 }
 }
-//create reactrangles
+//create reactrangles-----------------------------------
 function createrect(){
 
     if(f==false){
@@ -171,7 +165,7 @@ function createrect(){
     }
 }
 }
-//create circless
+//create circless-----------------------------
 function createcircle(){
 
     if(f==false){
@@ -206,7 +200,6 @@ function draw() {
             case 1:
                 let radius=Math.sqrt(Math.pow(mouseX-x1,2)+Math.pow(mouseY-y1,2));
                 square(x1 - radius, y1 - radius, radius*2);
-                // square(x1, y1, Math.sqrt(Math.pow(mouseX-x1,2)+Math.pow(mouseY-y1,2)));
                 break;
             case 2:
                 circle(x1, y1, 2*Math.sqrt(Math.pow(mouseX-x1,2)+Math.pow(mouseY-y1,2)));
@@ -248,7 +241,7 @@ function draw() {
     }
     len = (235/500)*breadth;
 
-    //drawing markers the better way
+    //drawing the scale in the x and y axis -----------------------------------------------
     let spacing = ((width-boundarySpacing*2)/20);
     for (let index = 0; index < 20; index++) {
         if(index%2!==0)

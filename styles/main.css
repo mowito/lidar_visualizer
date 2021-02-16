@@ -92,7 +92,6 @@ main{
     padding: 10px;
     border-radius: .5rem;
     height: 20%;
-    /* width: 100%; */
 
     color: #17191A;
 }
@@ -140,7 +139,7 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-/* Tools------- */
+/* Tools------------------------------*/
 .tootls{
     display: flex;
     justify-content: space-around;
@@ -167,7 +166,7 @@ input[type=number] {
     color: black;
 }
 
-
+/* controls------------------------------- */
 .controls{
     display: flex;
     flex-direction: column;
@@ -194,7 +193,6 @@ input[type=number] {
 /* Canves----------------- */
 .canvesCard{
     margin: 20px;
-    /* padding: 5px; */
     background-color: white;
     border-radius: .5rem;
     display: flex;
@@ -202,6 +200,29 @@ input[type=number] {
     align-items: center;
 }
 
-.canvesCard canvas{
-    background-color: blueviolet;
+/* footer------------------- */
+footer{
+    margin: 10px;
+    padding: 10px;
+    opacity: .5;
+    font-size: 80%;
+}
+footer hr{
+    border-top: 3px solid white;
+}
+footer div{
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+footer a{
+    margin-left: 10px;
+    opacity: 1;
+
+    color: white;
+}
+
+.email{
+    margin-left: 10px;
 }
