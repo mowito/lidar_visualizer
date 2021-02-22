@@ -75,7 +75,7 @@ main {
   cursor: pointer;
 }
 .infoCard select:hover {
-  color: black;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 /* Dashbord-------------------- */
