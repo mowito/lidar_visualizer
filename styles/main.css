@@ -1,0 +1,232 @@
+/* Default--------------------------------- */
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+body {
+  font-size: 16px;
+  font-family: "Segoe UI";
+  min-height: 100vh;
+  background-color: #17191a;
+  color: white;
+}
+
+/* Header---------------------------------- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f27935;
+  color: white;
+}
+.logo {
+  margin-left: 3.5rem;
+}
+.logo img {
+  width: 95px;
+}
+
+.navbar ul {
+  display: flex;
+}
+.navbar li {
+  list-style: none;
+}
+.navbar a {
+  text-decoration: none;
+  color: black;
+  padding: 1rem;
+  font-size: 20px;
+}
+.navbar a:hover {
+  color: white;
+}
+
+/* Main------------------------------------- */
+main {
+  display: flex;
+  /* justify-content: space-around; */
+  /* display: grid; */
+  /* grid-template-columns: 1fr 2.5fr; */
+}
+
+/* Info Card-------------------- */
+.infoCard {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255, 0.5);
+
+  margin: 20px;
+  padding: 10px;
+  border-radius: 0.5rem;
+  width: 35%;
+
+  color: #17191a;
+}
+
+.infoCard select {
+  background-color: rgb(255, 255, 255, 0);
+  color: #2b72d8;
+  font-size: 150%;
+  margin: 5px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+.infoCard select:hover {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+/* Dashbord-------------------- */
+.rightcontaner {
+  width: 100%;
+}
+.dashbord {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(255, 255, 255, 0.5);
+
+  margin: 20px;
+  padding: 10px;
+  border-radius: 0.5rem;
+  height: 20%;
+
+  color: #17191a;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  margin: 5px;
+  color: #17191a;
+  font-weight: 500;
+}
+
+.input {
+  display: flex;
+}
+
+.inputbox {
+  color: rgba(23, 25, 26, 0.8);
+}
+
+.input input {
+  color: rgba(23, 25, 26, 0.8);
+  background-color: rgb(255, 255, 255, 0);
+  text-align: center;
+  width: 3rem;
+}
+
+.input input:hover,
+.inputbox:hover {
+  color: #17191a;
+}
+
+.input label {
+  flex-grow: 1;
+}
+
+/* To remove updown arrows for  Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Tools------------------------------*/
+.tootls {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.tool {
+  margin: 15px;
+  padding: 10px;
+  border-radius: 0.5rem;
+  font-size: 300%;
+  width: 100px;
+  height: 100px;
+  background-color: #f27935;
+  opacity: 0.5;
+}
+
+.tool:hover {
+  opacity: 1;
+  color: white;
+}
+
+.toolseleted {
+  opacity: 1;
+  color: black;
+}
+
+/* controls------------------------------- */
+.controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+#play,
+#reset {
+  color: rgba(23, 25, 26);
+  padding: 5px;
+  margin: 10px;
+  width: 70px;
+  border-radius: 0.5rem;
+  font-size: 120%;
+  background-color: #5aca5a;
+}
+#play:hover,
+#reset:hover {
+  color: white;
+}
+
+#reset {
+  background-color: #42b5d3;
+}
+
+/* Canves----------------- */
+.canvesCard {
+  margin: 20px;
+  background-color: white;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* footer------------------- */
+footer {
+  margin: 10px;
+  padding: 10px;
+  opacity: 0.5;
+  font-size: 80%;
+}
+footer hr {
+  border-top: 3px solid white;
+}
+footer div {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+footer a {
+  margin-left: 10px;
+  opacity: 1;
+
+  color: white;
+}
+
+.email {
+  margin-left: 10px;
+}

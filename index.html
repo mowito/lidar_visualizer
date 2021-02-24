@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.1.4/lib/p5.min.js"></script>
+    <link rel = "icon" href = "../images/mowito_icon .png" type = "image/x-icon"> 
+    <title>Mowito Lidar Visualizer</title>
+  </head>
+  <body>
+    <!-- Header============================================ -->
+    <header>
+      <nav class="navbar">
+        <a href="http://mowito.in" class="logo"> 
+          <img src="./images/mowito_logo2.png">
+        </a>
+        <ul>
+          <li><a href="https://mowito.in/">Home</a></li>
+          <li><a href="#">Lidar Visualizer</a></li>
+          <li><a href="https://mowito.in/index.html#my_contact">Contact Us</a></li>
+        </ul>
+      </nav>
+    </header>
+    <!-- Main==================================================== -->
+    <main>
+      <!-- Info Card =================================== -->
+      <div class="infoCard">
+        <select id="lidar" name="Lidar Type" onchange="assist(this)"></select>
+        <div id="instructions" class="instr">
+          <h3> Instructions:</h3>
+          <p>
+          1: Create obstacles, by clicking on the canvas.<br><br>
+          2: Select LiDAR from the drop-down menu above.<br><br>
+          3: Hit "Play" and move the cursor on the canvas.<br> <br>
+          4: To add more obstacles, hit "Stop" and add obstacles.<br><br>
+          5: To remove obstacles, hit "Reset".<br><br>
+          6: Modify the values at the top, to test for custom values.<br><br>
+          Note: In case of range of values, the max value is used for visualization <br><br>
+          Note: The tool is currently designed for 2D Visualization only <br><br>
+          If you want a new LiDAR to be added, please contact us!
+          </p>
+        </div>
+        <div id="update"></div>
+      </div>
+      <!-- Dashbord Card================================== -->
+      <div class="rightcontaner">
+      <div class="dashbord">
+        <div class="inputs">
+          <div class="input">
+            <label id= "a" for="angle">Angular Resolution</label>
+            <div class="inputbox">
+              <input type="number" step="0.1" id="angle" onclick="angle()" placeholder="angle" data-inline="true" value="1" ></input>
+              °
+            </div>
+          </div>
+          <div class="input">
+            <label id="b" for="range" >Detection Range</label>
+            <div class="inputbox">
+            <input type="number" id="range" onclick="rangeofrays()" placeholder="detection distance" data-inline="true" value="500"></input>
+            m
+            </div>
+          </div>
+          <div class="input">
+            <label id="c" for="angrange">Angular Range</label>
+            <div class="inputbox">
+            <input type="number" id="angrange" onclick="angularrange()" data-inline="true" placeholder="Angle Range" value="360"></input>
+            °
+            </div>
+          </div>
+          <div class="input">
+            <label id="widlabel" for="length">Room Length</label>
+            <div class="inputbox">
+            <input type="number" id="breadth" placeholder="Breadth" data-inline="true" value="250"></input>
+            m
+            </div>
+          </div>
+        </div>
+        <div class="tools">
+          <i class="fas fa-horizontal-rule"></i>
+          <button id="line" onclick="selecttools(0)" class="tool toolseleted"><i class="fa fa-arrows-v"></i></button>
+          <button id="rect" onclick="selecttools(1)" class="tool"><i class="fa fa-square"></i></button>
+          <button id="circle" onclick="selecttools(2)" class="tool"><i class="fa fa-eraser"></i></button>
+        </div>
+        <div class="controls">
+          <input type="button" id="play" onclick="play()" value="Play" class="playbutton" ></input>
+          <input type="button" id="reset" onclick="reset()" value="Reset" data-inline="true"></input>
+        </div>
+      </div>
+      <!-- Canves Card======================================== -->
+      <div class="canvesCard"></div>
+    </div>
+    
+  </main>
+  <footer>
+    <hr>
+    <div>
+      <p>Summited by Sourabh Soni</p>
+      <a href="http://www.linkedin.com/in/sourabh58"><i class="fa fa-linkedin"></i></a>
+      <p class="email">ssourabh025@gmail.com</p>
+    </div>
+    
+  </footer>
+
+    <script src="scripts/script.js"></script>
+    <script src="scripts/sketch.js"></script>   
+    <script src="scripts/ray.js"></script>
+    <script src="scripts/shapes.js"></script>
+    <script src="scripts/particle.js"></script>
+    <script src="p5.collide_lib/p5.collide2d.js"></script>
+
+  </body>
+</html>
