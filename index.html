@@ -31,6 +31,7 @@
         <select id="lidar" name="Lidar Type" onchange="assist(this)"></select>
         <div id="instructions" class="instr">
           <h3> Instructions:</h3>
+          <br>
           <p>
           1: Create obstacles, by clicking on the canvas.<br><br>
           2: Select LiDAR from the drop-down menu above.<br><br>
@@ -79,13 +80,16 @@
           </div>
         </div>
         <div class="tools">
-          <i class="fas fa-horizontal-rule"></i>
+            <div>
           <button id="line" onclick="selecttools(0)" class="tool toolseleted"><i class="fa fa-arrows-v"></i></button>
           <button id="rect" onclick="selecttools(1)" class="tool"><i class="fa fa-square"></i></button>
-          <button id="circle" onclick="selecttools(2)" class="tool"><i class="fa fa-eraser"></i></button>
+          <button id="triangle" onclick="selecttools(4)" class="tool" style="transform: rotate(-90deg);"><i class="fa fa-play"></i></button>
+          <button id="circle" onclick="selecttools(5)" class="tool"><i class="fa fa-circle"></i></button>
+          <button id="eraser" onclick="selecttools(2)" class="tool"><i class="fa fa-eraser"></i></button>
+        </div>
         </div>
         <div class="controls">
-          <input type="button" id="play" onclick="play()" value="Play" class="playbutton" ></input>
+          <input type="button" id="play" onclick="selecttools(3)" value="Play" class="playbutton" ></input>
           <input type="button" id="reset" onclick="reset()" value="Reset" data-inline="true"></input>
         </div>
       </div>
@@ -98,8 +102,6 @@
     <hr>
     <div>
       <p>Mowito Robotic Systems Pvt Ltd</p>
-      <!-- <a href="http://www.linkedin.com/in/sourabh58"><i class="fa fa-linkedin"></i></a> -->
-      <p class="email">aditya@mowito.in</p>
     </div>
     
   </footer>
@@ -109,7 +111,6 @@
     <script src="scripts/ray.js"></script>
     <script src="scripts/shapes.js"></script>
     <script src="scripts/particle.js"></script>
-    <script src="p5.collide_lib/p5.collide2d.js"></script>
 
   </body>
 </html>

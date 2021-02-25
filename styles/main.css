@@ -114,6 +114,15 @@ main {
   color: rgba(23, 25, 26, 0.8);
 }
 
+.inputbox input {
+  border-color: #17191a;
+  border-bottom-style: solid;
+  border-width: 1px;
+  margin-left: 10px;
+  width: min-content;
+  border-radius: 4px;
+}
+
 .input input {
   color: rgba(23, 25, 26, 0.8);
   background-color: rgb(255, 255, 255, 0);
@@ -142,18 +151,21 @@ input[type="number"] {
 }
 
 /* Tools------------------------------*/
-.tootls {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+.tools div {
+  display: grid;
+  grid-template-columns: 40px 40px 40px 40px;
+  grid-gap: 10px;
+}
+.tools h6 {
+  margin: 5px;
 }
 .tool {
-  margin: 15px;
-  padding: 10px;
+  /* margin: 8px; */
+  padding: 5px;
   border-radius: 0.5rem;
-  font-size: 300%;
-  width: 100px;
-  height: 100px;
+  font-size: 150%;
+  width: 40px;
+  height: 40px;
   background-color: #f27935;
   opacity: 0.5;
 }
