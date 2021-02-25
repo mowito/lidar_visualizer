@@ -1,4 +1,5 @@
 const canvesdiv = document.querySelector(".canvesCard");
+const elem = document.getElementById("play");
 
 let walls = [];
 let frame = [];
@@ -78,17 +79,18 @@ function toolfunction() {
       break;
   }
 }
-
+function stop() {
+  f = false;
+  elem.value = "Play";
+  elem.style.backgroundColor = "#8FBC8F";
+}
 function play() {
-  var elem = document.getElementById("play");
   if (elem.value == "Play") {
     f = true;
     elem.value = "Stop";
     elem.style.backgroundColor = "#CD5C5C";
   } else {
-    f = false;
-    elem.value = "Play";
-    elem.style.backgroundColor = "#8FBC8F";
+    stop();
   }
 }
 function reset() {
@@ -161,13 +163,18 @@ function selecttools(t) {
   switch (t) {
     case 0:
       linebtn.classList.add("toolseleted");
+      stop();
       break;
     case 1:
       rectbtn.classList.add("toolseleted");
+      stop();
       break;
     case 2:
       circlebtn.classList.add("toolseleted");
+      stop();
       break;
+    case 3:
+      play();
 
     default:
       break;
@@ -176,7 +183,12 @@ function selecttools(t) {
 
 //to crate lines----------------------------------
 function createwalls() {
-  if (f == false) {
+  var isinside =
+    boundarySpacing < mouseX &&
+    mouseX < width - boundarySpacing &&
+    mouseY > boundarySpacing &&
+    mouseY < height - boundarySpacing;
+  if (f == false && isinside) {
     if (drawingline === false) {
       x1 = mouseX;
       y1 = mouseY;
@@ -185,12 +197,6 @@ function createwalls() {
       x2 = mouseX;
       y2 = mouseY;
       drawingline = false;
-
-      var isinside =
-        boundarySpacing < mouseX &&
-        mouseX < width - boundarySpacing &&
-        mouseY > boundarySpacing &&
-        mouseY < height - boundarySpacing;
       if (isinside) {
         walls.push(new Boundary(x1, y1, x2, y2));
       }
@@ -199,7 +205,12 @@ function createwalls() {
 }
 //create reactrangles-----------------------------------
 function createrect() {
-  if (f == false) {
+  var isinside =
+    boundarySpacing < mouseX &&
+    mouseX < width - boundarySpacing &&
+    mouseY > boundarySpacing &&
+    mouseY < height - boundarySpacing;
+  if (f == false && isinside) {
     if (drawingline === false) {
       x1 = mouseX;
       y1 = mouseY;
@@ -209,11 +220,6 @@ function createrect() {
       y2 = mouseY;
       drawingline = false;
 
-      var isinside =
-        boundarySpacing < mouseX &&
-        mouseX < width - boundarySpacing &&
-        mouseY > boundarySpacing &&
-        mouseY < height - boundarySpacing;
       if (isinside) {
         walls.push(new Boundary(x1, y1, x2, y1));
         walls.push(new Boundary(x1, y1, x1, y2));
