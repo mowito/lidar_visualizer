@@ -17,13 +17,19 @@ let x1, x2, y1, y2;
 let s;
 let g = 1;
 let cnv;
+let ctx;
 let len = 150;
 let mazerLines = 15; // the lines for the x and y axis scale
 
 let tool = 0;
+let n = 20; // n gon , to form a circle
 
 function setup() {
   cnv = createCanvas(canvesdiv.offsetWidth, canvesdiv.offsetWidth * (9 / 16)); // seting the canves to 16:9 depending on the avlibel width
+  ctx = canvas.getContext("2d");
+
+  // ctx.closePath();
+
   // Parent div for canves ----------------
   cnv.parent(canvesdiv);
   cnv.mouseClicked(toolfunction);
@@ -73,6 +79,12 @@ function toolfunction() {
       break;
     case 2:
       useeraser();
+      break;
+    case 4:
+      createtriangle();
+      break;
+    case 5:
+      createcircle();
       break;
 
     default:
@@ -153,10 +165,14 @@ function angle() {
 function selecttools(t) {
   const linebtn = document.querySelector("#line");
   const rectbtn = document.querySelector("#rect");
+  const trianglebtn = document.querySelector("#triangle");
   const circlebtn = document.querySelector("#circle");
+  const eraserbtn = document.querySelector("#eraser");
 
   linebtn.classList.remove("toolseleted");
   rectbtn.classList.remove("toolseleted");
+  eraserbtn.classList.remove("toolseleted");
+  trianglebtn.classList.remove("toolseleted");
   circlebtn.classList.remove("toolseleted");
   tool = t;
 
@@ -170,11 +186,20 @@ function selecttools(t) {
       stop();
       break;
     case 2:
-      circlebtn.classList.add("toolseleted");
+      eraserbtn.classList.add("toolseleted");
       stop();
       break;
     case 3:
       play();
+      break;
+    case 4:
+      trianglebtn.classList.add("toolseleted");
+      stop();
+      break;
+    case 5:
+      circlebtn.classList.add("toolseleted");
+      stop();
+      break;
 
     default:
       break;
@@ -183,12 +208,7 @@ function selecttools(t) {
 
 //to crate lines----------------------------------
 function createwalls() {
-  var isinside =
-    boundarySpacing < mouseX &&
-    mouseX < width - boundarySpacing &&
-    mouseY > boundarySpacing &&
-    mouseY < height - boundarySpacing;
-  if (f == false && isinside) {
+  if (f == false) {
     if (drawingline === false) {
       x1 = mouseX;
       y1 = mouseY;
@@ -197,20 +217,14 @@ function createwalls() {
       x2 = mouseX;
       y2 = mouseY;
       drawingline = false;
-      if (isinside) {
-        walls.push(new Boundary(x1, y1, x2, y2));
-      }
+
+      walls.push(new Boundary(x1, y1, x2, y2));
     }
   }
 }
 //create reactrangles-----------------------------------
 function createrect() {
-  var isinside =
-    boundarySpacing < mouseX &&
-    mouseX < width - boundarySpacing &&
-    mouseY > boundarySpacing &&
-    mouseY < height - boundarySpacing;
-  if (f == false && isinside) {
+  if (f == false) {
     if (drawingline === false) {
       x1 = mouseX;
       y1 = mouseY;
@@ -220,16 +234,66 @@ function createrect() {
       y2 = mouseY;
       drawingline = false;
 
-      if (isinside) {
-        walls.push(new Boundary(x1, y1, x2, y1));
-        walls.push(new Boundary(x1, y1, x1, y2));
-        walls.push(new Boundary(x1, y2, x2, y2));
-        walls.push(new Boundary(x2, y1, x2, y2));
-      }
+      walls.push(new Boundary(x1, y1, x2, y1));
+      walls.push(new Boundary(x1, y1, x1, y2));
+      walls.push(new Boundary(x1, y2, x2, y2));
+      walls.push(new Boundary(x2, y1, x2, y2));
     }
   }
 }
+//trangle-------------------------------------------------------------
+function createtriangle() {
+  if (f == false) {
+    if (drawingline === false) {
+      x1 = mouseX;
+      y1 = mouseY;
+      drawingline = true;
+    } else {
+      x2 = mouseX;
+      y2 = mouseY;
+      drawingline = false;
 
+      walls.push(new Boundary(x1, y2, x2, y2));
+      walls.push(new Boundary(x1, y2, x1 + (x2 - x1) / 2, y1));
+      walls.push(new Boundary(x2, y2, x1 + (x2 - x1) / 2, y1));
+    }
+  }
+}
+//circle--------------------------------------------------
+function createcircle() {
+  if (f == false) {
+    if (drawingline === false) {
+      x1 = mouseX;
+      y1 = mouseY;
+      drawingline = true;
+    } else {
+      x2 = mouseX;
+      y2 = mouseY;
+      drawingline = false;
+
+      let xc = (x1 + mouseX) / 2;
+      let yc = (y1 + mouseY) / 2;
+      let r = Math.sqrt((x1 - xc) * (x1 - xc) + (y1 - yc) * (y1 - yc));
+      let xf = xc + r * Math.cos((2 * Math.PI * 0) / n);
+      let yf = yc + r * Math.sin((2 * Math.PI * 0) / n);
+      let xp = xf;
+      let yp = yf;
+      for (let i = 1; i < n; i++) {
+        walls.push(
+          new Boundary(
+            xc + r * Math.cos((2 * Math.PI * i) / n),
+            yc + r * Math.sin((2 * Math.PI * i) / n),
+            xp,
+            yp
+          )
+        );
+        xp = xc + r * Math.cos((2 * Math.PI * i) / n);
+        yp = yc + r * Math.sin((2 * Math.PI * i) / n);
+      }
+      walls.push(new Boundary(xf, yf, xp, yp));
+    }
+  }
+}
 function useeraser() {
   walls.forEach((wall, i) => {
     if (tool == 2) {
@@ -238,7 +302,7 @@ function useeraser() {
       eraser.show();
       if (
         i > 3 &&
-        lineCircle(
+        lineeraser(
           wall.a.x,
           wall.a.y,
           wall.b.x,
@@ -253,9 +317,9 @@ function useeraser() {
     }
   });
 }
-function lineCircle(x1, y1, x2, y2, cx, cy, rad) {
-  let inside1 = pointCircle(x1, y1, cx, cy, rad);
-  let inside2 = pointCircle(x2, y2, cx, cy, rad);
+function lineeraser(x1, y1, x2, y2, cx, cy, rad) {
+  let inside1 = pointeraser(x1, y1, cx, cy, rad);
+  let inside2 = pointeraser(x2, y2, cx, cy, rad);
   if (inside1 || inside2) return true;
 
   let len = dist(x1, y1, x2, y2);
@@ -289,7 +353,7 @@ function linePoint(x1, y1, x2, y2, px, py) {
   }
   return false;
 }
-function pointCircle(px, py, cx, cy, size) {
+function pointeraser(px, py, cx, cy, size) {
   let d = dist(px, py, cx, cy);
 
   if (d <= size / 2) {
@@ -297,29 +361,6 @@ function pointCircle(px, py, cx, cy, size) {
   }
   return false;
 }
-
-// //create circless-----------------------------
-// function createcircle(){
-
-//     if(f==false){
-
-//     if(drawingline===false){
-//         x1 = mouseX;
-//         y1 = mouseY;
-//         drawingline = true;
-//     }
-//     else{
-//         x2 = mouseX;
-//         y2 = mouseY;
-//         drawingline = false;
-
-//         var isinside = boundarySpacing<mouseX && mouseX<width-boundarySpacing && mouseY>boundarySpacing && mouseY<height-boundarySpacing
-//         if(isinside){
-//             circles.push(new Circle(x1,y1,2*Math.sqrt(Math.pow(x2-x1,2)+Math.pow(y2-y1,2))));
-//         }
-//     }
-// }
-// }
 
 function draw() {
   background(255);
@@ -335,6 +376,30 @@ function draw() {
         line(x1, mouseY, mouseX, mouseY);
         line(mouseX, y1, mouseX, mouseY);
         break;
+      case 4:
+        line(x1, mouseY, mouseX, mouseY);
+        line(x1, mouseY, x1 + (mouseX - x1) / 2, y1);
+        line(mouseX, mouseY, x1 + (mouseX - x1) / 2, y1);
+        break;
+      case 5:
+        let xc = (x1 + mouseX) / 2;
+        let yc = (y1 + mouseY) / 2;
+        let r = Math.sqrt((x1 - xc) * (x1 - xc) + (y1 - yc) * (y1 - yc));
+        let xf = xc + r * Math.cos((2 * Math.PI * 0) / n);
+        let yf = yc + r * Math.sin((2 * Math.PI * 0) / n);
+        let xp = xf;
+        let yp = yf;
+        for (let i = 1; i < n; i++) {
+          line(
+            xc + r * Math.cos((2 * Math.PI * i) / n),
+            yc + r * Math.sin((2 * Math.PI * i) / n),
+            xp,
+            yp
+          );
+          xp = xc + r * Math.cos((2 * Math.PI * i) / n);
+          yp = yc + r * Math.sin((2 * Math.PI * i) / n);
+        }
+        line(xf, yf, xp, yp);
       default:
         break;
     }
@@ -347,7 +412,7 @@ function draw() {
       eraser.show();
       if (
         i > 3 &&
-        lineCircle(
+        lineeraser(
           wall.a.x,
           wall.a.y,
           wall.b.x,
@@ -359,7 +424,9 @@ function draw() {
       ) {
         wall.show("red");
       } else wall.show(0);
-    } else wall.show(0);
+    } else {
+      wall.show(0);
+    }
   });
 
   if (f == true) {
@@ -385,6 +452,32 @@ function draw() {
   }
   len = (235 / 500) * breadth;
 
+  ctx.rect(
+    boundarySpacing,
+    boundarySpacing,
+    width - boundarySpacing,
+    height - boundarySpacing
+  );
+  //----------------------------------
+  fill(255);
+  stroke(255);
+  rect(
+    boundarySpacing,
+    height - boundarySpacing + 1,
+    width - boundarySpacing,
+    height - boundarySpacing * 2
+  );
+  rect(
+    width - boundarySpacing + 1,
+    boundarySpacing,
+    boundarySpacing,
+    height - boundarySpacing
+  );
+  rect(0, 0, width, boundarySpacing - 1);
+  rect(0, 0, boundarySpacing - 1, height);
+
+  fill(0);
+  stroke(0);
   //drawing the scale in the x and y axis -----------------------------------------------
   let spacing = (width - boundarySpacing * 2) / 20;
   for (let index = 0; index < 20; index++) {

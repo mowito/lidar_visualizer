@@ -80,10 +80,13 @@
           </div>
         </div>
         <div class="tools">
-          <i class="fas fa-horizontal-rule"></i>
+            <div>
           <button id="line" onclick="selecttools(0)" class="tool toolseleted"><i class="fa fa-arrows-v"></i></button>
           <button id="rect" onclick="selecttools(1)" class="tool"><i class="fa fa-square"></i></button>
-          <button id="circle" onclick="selecttools(2)" class="tool"><i class="fa fa-eraser"></i></button>
+          <button id="triangle" onclick="selecttools(4)" class="tool" style="transform: rotate(-90deg);"><i class="fa fa-play"></i></button>
+          <button id="circle" onclick="selecttools(5)" class="tool"><i class="fa fa-circle"></i></button>
+          <button id="eraser" onclick="selecttools(2)" class="tool"><i class="fa fa-eraser"></i></button>
+        </div>
         </div>
         <div class="controls">
           <input type="button" id="play" onclick="selecttools(3)" value="Play" class="playbutton" ></input>
