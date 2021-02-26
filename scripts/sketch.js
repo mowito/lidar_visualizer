@@ -20,6 +20,7 @@ let cnv;
 let ctx;
 let len = 150;
 let mazerLines = 15; // the lines for the x and y axis scale
+let particalrotatespeed = 50;
 
 let tool = 0;
 let n = 20; // n gon , to form a circle
@@ -448,7 +449,7 @@ function draw() {
     if (document.getElementById("angle").value != "") {
       g = parseFloat(document.getElementById("angle").value);
     }
-    particle = new Particle(g);
+    particle = new Particle(g, faceDir);
     if (
       boundarySpacing < mouseX &&
       mouseX < width - boundarySpacing &&
@@ -540,4 +541,20 @@ function draw() {
         );
     }
   }
+}
+
+var faceDir = 0;
+function mouseWheel(event) {
+  //move the square according to the vertical scroll amount
+  if (
+    boundarySpacing < mouseX &&
+    mouseX < width - boundarySpacing &&
+    mouseY > boundarySpacing &&
+    mouseY < height - boundarySpacing
+  ) {
+    faceDir += event.delta / particalrotatespeed;
+
+    return false;
+  }
+  //uncomment to block page scrolling
 }

@@ -16,22 +16,24 @@ function angularrange() {
 
 //--------------------------------------------------------------------------
 class Particle {
-  constructor(getangle) {
+  constructor(getangle, faceDir) {
     this.pos = createVector(width / 2, height / 2);
     this.rays = [];
     this.getangle = getangle;
+    this.faceDir = faceDir;
     if (this.getangle < 0) {
       this.getangle = 1;
       document.getElementById("angle").value = "1";
     }
     var y;
+
     if (document.getElementById("angrange").value != "") {
       y = parseInt(document.getElementById("angrange").value);
     } else {
       y = 360;
     }
     if (this.getangle != 0) {
-      for (let a = 0; a < y; a += this.getangle) {
+      for (let a = faceDir; a < y + faceDir; a += this.getangle) {
         this.rays.push(new Ray(this.pos, radians(a)));
       }
     }
@@ -69,32 +71,6 @@ class Particle {
           }
         }
       }
-
-      //for all squares --------------
-      // for (let wall of rects) {
-      //     pt = ray.cast(1,wall);
-      //     if (pt) {
-      //         const d = this.pos.dist(pt);
-      //         if (d < record) {
-      //             record = d;
-      //             closest = pt;
-      //         }
-
-      //     }
-      // }
-
-      // //for all circles --------------
-      // for (let wall of circles) {
-      //     pt = ray.cast(2,wall);
-      //     if (pt) {
-      //         const d = this.pos.dist(pt);
-      //         if (d < record) {
-      //             record = d;
-      //             closest = pt;
-      //         }
-
-      //     }
-      // }
 
       if (length >= record) {
         stroke(color(0, 0, 255));
