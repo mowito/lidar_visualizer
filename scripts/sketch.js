@@ -91,16 +91,31 @@ function toolfunction() {
       break;
   }
 }
+const selecterInput = document.querySelector(".selecter");
+const angleInput = document.querySelector("#angle");
+const rangeInput = document.querySelector("#range");
+const angrangeInput = document.querySelector("#angrange");
+const breadthInput = document.querySelector("#breadth");
 function stop() {
   f = false;
   elem.value = "Play";
   elem.style.backgroundColor = "#8FBC8F";
+  selecterInput.disabled = false;
+  angleInput.disabled = false;
+  rangeInput.disabled = false;
+  angrangeInput.disabled = false;
+  breadthInput.disabled = false;
 }
 function play() {
   if (elem.value == "Play") {
     f = true;
     elem.value = "Stop";
     elem.style.backgroundColor = "#CD5C5C";
+    selecterInput.disabled = true;
+    angleInput.disabled = true;
+    rangeInput.disabled = true;
+    angrangeInput.disabled = true;
+    breadthInput.disabled = true;
   } else {
     stop();
   }

@@ -56,6 +56,12 @@ function assist(lidar) {
   });
 
   output += "</p>";
-  document.getElementById("update").innerHTML = output;
-  document.getElementById("instructions").innerHTML = "";
+  // document.getElementById("update").innerHTML = output;
+  // document.getElementById("instructions").innerHTML = "";
 }
+
+const selecter = document.querySelector("select");
+const resetSelecter = () => {
+  console.log(selecter.value);
+  selecter.value = "Choose Lidar Type";
+};
