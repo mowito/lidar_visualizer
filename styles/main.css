@@ -65,16 +65,20 @@ main {
 
   color: #17191a;
 }
-
-.infoCard select {
+.infoCard h3 {
+  color: #2b72d8;
+}
+.selecter {
   background-color: rgb(255, 255, 255, 0);
   color: #2b72d8;
-  font-size: 150%;
-  margin: 5px;
-  margin-bottom: 15px;
+  font-size: 120%;
+  /* margin: 5px; */
+  margin-bottom: 5px;
   cursor: pointer;
+  text-align: left;
+  font-weight: bold;
 }
-.infoCard select:hover {
+.selecter:hover {
   color: rgba(0, 0, 0, 0.5);
 }
 
@@ -137,6 +141,7 @@ main {
 
 .input label {
   flex-grow: 1;
+  padding-left: 5px;
 }
 
 /* To remove updown arrows for  Chrome, Safari, Edge, Opera */
@@ -208,14 +213,27 @@ input[type="number"] {
 
 /* Canves----------------- */
 .canvesCard {
-  margin: 20px;
+  position: relative;
+  margin: auto 20px;
   background-color: white;
   border-radius: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
+.roomLength {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  color: #17191a;
+  display: flex;
+  font-weight: bold;
+}
+.roomLength input {
+  opacity: 1;
+  color: black;
+  font-weight: bold;
+}
 /* footer------------------- */
 footer {
   margin: 10px;

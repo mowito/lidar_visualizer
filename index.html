@@ -28,7 +28,6 @@
     <main>
       <!-- Info Card =================================== -->
       <div class="infoCard">
-        <select id="lidar" name="Lidar Type" onchange="assist(this)"></select>
         <div id="instructions" class="instr">
           <h3> Instructions:</h3>
           <br>
@@ -50,6 +49,7 @@
       <div class="rightcontaner">
       <div class="dashbord">
         <div class="inputs">
+          <select id="lidar" name="Lidar Type" class="selecter" onchange="assist(this)"></select>
           <div class="input">
             <label id= "a" for="angle">Angular Resolution</label>
             <div class="inputbox">
@@ -71,13 +71,13 @@
             °
             </div>
           </div>
-          <div class="input">
+          <!-- <div class="input">
             <label id="widlabel" for="length">Room Length</label>
             <div class="inputbox">
             <input type="number" id="breadth" placeholder="Breadth" data-inline="true" value="250"></input>
             m
             </div>
-          </div>
+          </div> -->
         </div>
         <div class="tools">
             <div>
@@ -94,7 +94,15 @@
         </div>
       </div>
       <!-- Canves Card======================================== -->
-      <div class="canvesCard"></div>
+      <div class="canvesCard">
+        <div class="input roomLength">
+            <label id="widlabel" for="length">Room Length</label>
+            <div class="inputbox">
+            <input type="number" id="breadth" placeholder="Breadth" data-inline="true" value="250"></input>
+            m
+            </div>
+          </div>
+      </div>
     </div>
     
   </main>
