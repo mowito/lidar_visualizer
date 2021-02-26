@@ -20,6 +20,7 @@ let cnv;
 let ctx;
 let len = 150;
 let mazerLines = 15; // the lines for the x and y axis scale
+let particalrotatespeed = 50;
 
 let tool = 0;
 let n = 20; // n gon , to form a circle
@@ -91,16 +92,31 @@ function toolfunction() {
       break;
   }
 }
+const selecterInput = document.querySelector(".selecter");
+const angleInput = document.querySelector("#angle");
+const rangeInput = document.querySelector("#range");
+const angrangeInput = document.querySelector("#angrange");
+const breadthInput = document.querySelector("#breadth");
 function stop() {
   f = false;
   elem.value = "Play";
   elem.style.backgroundColor = "#8FBC8F";
+  selecterInput.disabled = false;
+  angleInput.disabled = false;
+  rangeInput.disabled = false;
+  angrangeInput.disabled = false;
+  breadthInput.disabled = false;
 }
 function play() {
   if (elem.value == "Play") {
     f = true;
     elem.value = "Stop";
     elem.style.backgroundColor = "#CD5C5C";
+    selecterInput.disabled = true;
+    angleInput.disabled = true;
+    rangeInput.disabled = true;
+    angrangeInput.disabled = true;
+    breadthInput.disabled = true;
   } else {
     stop();
   }
@@ -433,7 +449,7 @@ function draw() {
     if (document.getElementById("angle").value != "") {
       g = parseFloat(document.getElementById("angle").value);
     }
-    particle = new Particle(g);
+    particle = new Particle(g, faceDir);
     if (
       boundarySpacing < mouseX &&
       mouseX < width - boundarySpacing &&
@@ -525,4 +541,20 @@ function draw() {
         );
     }
   }
+}
+
+var faceDir = 0;
+function mouseWheel(event) {
+  //move the square according to the vertical scroll amount
+  if (
+    boundarySpacing < mouseX &&
+    mouseX < width - boundarySpacing &&
+    mouseY > boundarySpacing &&
+    mouseY < height - boundarySpacing
+  ) {
+    faceDir += event.delta / particalrotatespeed;
+
+    return false;
+  }
+  //uncomment to block page scrolling
 }
