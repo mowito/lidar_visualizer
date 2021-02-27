@@ -1,0 +1,16 @@
+/* @font-face {
+  font-family: headerfont;
+  src: url("./fonts/Montserrat-Bold.ttf") format("truetype");
+}
+header {
+  font-family: "headerfont";
+} */
+.fixed-header {
+  /* position: fixed; */
+  /* top: 0;
+  left: 0; */
+  /* z-index: 99999999; */
+  background: #f27935;
+  padding: 20px 60px;
+  box-shadow: 0 5px 10px 0 rgb(50 50 50 / 6%);
+}
