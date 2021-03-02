@@ -271,3 +271,10 @@ footer a {
 .input span {
   min-width: 1rem;
 }
+.logo_con {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #17191a;
+  font-weight: 500;
+}

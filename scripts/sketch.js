@@ -168,9 +168,11 @@ function reset() {
     )
   );
 
-  document.getElementById("update").innerHTML = "";
-  document.getElementById("lidar").value = "Choose Lidar Type";
-  document.getElementById("lidar").text = "Choose Lidar Type";
+  document.getElementById("update").style.display = "none";
+  document.getElementById("instructions").style =
+    "display:flex;flex-direction: column;";
+  document.getElementById("lidar").value = "Pick a LiDAR";
+  document.getElementById("lidar").text = "Pick a LiDAR";
 }
 function angle() {
   var e = document.getElementById("angle");
@@ -381,6 +383,13 @@ function pointeraser(px, py, cx, cy, size) {
 function draw() {
   background(255);
 
+  if (mouseIsPressed) {
+    if (mouseButton === RIGHT) {
+      drawingline = false;
+      x1 = mouseX;
+      y1 = mouseY;
+    }
+  }
   if (drawingline == true) {
     switch (tool) {
       case 0:

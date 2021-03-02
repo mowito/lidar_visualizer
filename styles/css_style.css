@@ -422,7 +422,8 @@ body {
   display: inline-block;
 }
 .logo_con a img {
-  width: 75%;
+  width: 95%;
+  padding-bottom: 5px;
 }
 .my_menu li a {
   list-style-type: none;
@@ -1174,7 +1175,7 @@ body {
   box-shadow: 0 5px 10px 0 rgba(50, 50, 50, 0.06);
 }
 .fixed-header .logo_con a {
-  width: 125px;
+  width: 100px;
 }
 .mobile_menu {
   display: none;
@@ -1543,6 +1544,7 @@ body {
     position: absolute;
     top: 18px;
     left: 10px;
+  }
   }
   .hero_slider_con {
     position: absolute;
