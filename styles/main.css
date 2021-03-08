@@ -278,3 +278,59 @@ footer a {
   color: #17191a;
   font-weight: 500;
 }
+
+.saves {
+  display: grid;
+  grid-template-columns: 40px 40px 40px;
+  grid-gap: 10px;
+}
+.save {
+  padding: 5px;
+  border-radius: 0.5rem;
+  font-size: 150%;
+  width: 40px;
+  height: 40px;
+  background-color: #42b5d3;
+  opacity: 0.5;
+}
+.save:hover {
+  opacity: 1;
+  color: white;
+}
+
+.saved {
+  opacity: 1;
+  color: black;
+  background-color: #2b72d8;
+}
+
+.edit {
+  padding: 5px;
+  border-radius: 0.5rem;
+  font-size: 150%;
+  width: 40px;
+  height: 40px;
+  background-color: #5aca5a;
+  opacity: 0.5;
+}
+.on:active {
+  background-color: yellow;
+}
+.delet {
+  padding: 5px;
+  border-radius: 0.5rem;
+  font-size: 150%;
+  width: 40px;
+  height: 40px;
+  background-color: rgb(205, 92, 92);
+  opacity: 0.5;
+}
+
+.on {
+  opacity: 1;
+}
+
+.on:hover {
+  opacity: 1;
+  color: white;
+}

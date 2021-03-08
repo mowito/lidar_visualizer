@@ -2,6 +2,7 @@ const canvesdiv = document.querySelector(".canvesCard");
 const elem = document.getElementById("play");
 
 let walls = [];
+let savedwalls = {};
 let frame = [];
 let ray;
 let particle;
@@ -24,6 +25,7 @@ let particalrotatespeed = 50;
 
 let tool = 0;
 let n = 20; // n gon , to form a circle
+let csavedid;
 
 function setup() {
   cnv = createCanvas(canvesdiv.offsetWidth, canvesdiv.offsetWidth * (9 / 16)); // seting the canves to 16:9 depending on the avlibel width
@@ -67,8 +69,131 @@ function setup() {
     )
   );
   frame = walls;
+  savedwalls = JSON.parse(localStorage.getItem("saves"));
+  savedwalls && stylesavebtn();
+}
+//save bord-------------------------------
+function stylesavebtn() {
+  const savedid = Object.keys(savedwalls);
+  console.log(savedid);
+  for (let index = 1; index < 5; index++) {
+    let savebtn = document.querySelector("#s" + index);
+
+    savebtn.classList.remove("saved");
+
+    savedid.forEach((id) => {
+      if (`s${index}` == id) {
+        savebtn.classList.add("saved");
+      }
+    });
+  }
+}
+function savebord(id) {
+  const savebtn = document.querySelector("#" + id);
+  const savedid = savedwalls && Object.keys(savedwalls);
+  savedid &&
+    savedid.forEach((sid) => {
+      if (id == sid) {
+        walls = [];
+        csavedid = id;
+        document.querySelector(".edit").classList.add("on");
+        document.querySelector(".delet").classList.add("on");
+        // document.querySelector(".edit").disabled = true;
+        // document.querySelector(".delet").disabled = true;
+        savedwalls[id].forEach((cords) => {
+          walls.push(new Boundary(cords.x1, cords.y1, cords.x2, cords.y2));
+        });
+      }
+    });
+
+  // if(savebtn.)
+  wallcords = [];
+  walls.forEach((wall) => {
+    wallcords.push({
+      x1: wall.a.x,
+      y1: wall.a.y,
+      x2: wall.b.x,
+      y2: wall.b.y,
+    });
+  });
+  localStorage.setItem(
+    "saves",
+    JSON.stringify({ ...savedwalls, [`${id}`]: wallcords })
+  );
+  savedwalls = JSON.parse(localStorage.getItem("saves"));
+  savedwalls && stylesavebtn();
 }
 
+function edit() {
+  console.log(csavedid);
+  if (csavedid) {
+    console.log(csavedid);
+    wallcords = [];
+    walls.forEach((wall) => {
+      wallcords.push({
+        x1: wall.a.x,
+        y1: wall.a.y,
+        x2: wall.b.x,
+        y2: wall.b.y,
+      });
+    });
+    localStorage.setItem(
+      "saves",
+      JSON.stringify({ ...savedwalls, [`${csavedid}`]: wallcords })
+    );
+    savedwalls = JSON.parse(localStorage.getItem("saves"));
+    savedwalls && stylesavebtn();
+  }
+}
+function delet() {
+  if (csavedid) {
+    let temp = savedwalls;
+    savedwalls = {};
+    Object.keys(temp).forEach((id) => {
+      if (id != csavedid) {
+        savedwalls = { ...savedwalls, [`${id}`]: temp[id] };
+      }
+    });
+    localStorage.setItem("saves", JSON.stringify(savedwalls));
+    document.querySelector(".edit").classList.remove("on");
+    document.querySelector(".delet").classList.remove("on");
+    csavedid = "";
+    walls = [];
+    walls.push(
+      new Boundary(
+        boundarySpacing,
+        boundarySpacing,
+        width - boundarySpacing,
+        boundarySpacing
+      )
+    );
+    walls.push(
+      new Boundary(
+        width - boundarySpacing,
+        boundarySpacing,
+        width - boundarySpacing,
+        height - boundarySpacing
+      )
+    );
+    walls.push(
+      new Boundary(
+        width - boundarySpacing,
+        height - boundarySpacing,
+        boundarySpacing,
+        height - boundarySpacing
+      )
+    );
+    walls.push(
+      new Boundary(
+        boundarySpacing,
+        height - boundarySpacing,
+        boundarySpacing,
+        boundarySpacing
+      )
+    );
+    savedwalls && stylesavebtn();
+  }
+}
 // To switch betwin shapes--------------------------
 function toolfunction() {
   switch (tool) {
@@ -135,6 +260,11 @@ function reset() {
   range = 100000;
   document.getElementById("angrange").value = "360";
   drawingline = false;
+  csavedid = "";
+  document.querySelector(".edit").classList.remove("on");
+  document.querySelector(".delet").classList.remove("on");
+  // document.querySelector(".edit").disabled = false;
+  // document.querySelector(".delet").disabled = false;
   walls.push(
     new Boundary(
       boundarySpacing,
