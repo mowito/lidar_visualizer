@@ -34,7 +34,8 @@
     <div class="top_main_section full_conatiner"> -->
     <div class="my_header full_conatiner f_box fixed-header">
       <header class="my_header_in full_conatiner f_box">
-        <div class="logo_con"><a href="https://mowito.in/"><img src="./images/mowito_logo2.png"></a></div>
+        <div class="logo_con"><a href="https://mowito.in/"><img src="./images/mowito_logo2.png"></a><p class="title">LiDAR Visualizer</p></div>
+        
         <div class="menu_con">
           <ul class="my_menu f_box">
             <li><a href="https://mowito.in/">Home</a></li>
@@ -75,15 +76,17 @@
           <h3> Instructions:</h3>
           <br>
           <p>
-          1: Create obstacles, by clicking on the canvas.<br><br>
-          2: Select LiDAR from the drop-down menu above.<br><br>
-          3: Hit "Play" and move the cursor on the canvas.<br> <br>
-          4: To add more obstacles, hit "Stop" and add obstacles.<br><br>
-          5: To remove obstacles, hit "Reset".<br><br>
-          6: Modify the values at the top, to test for custom values.<br><br>
-          Note: In case of range of values, the max value is used for visualization <br><br>
-          Note: The tool is currently designed for 2D Visualization only <br><br>
-          If you want a new LiDAR to be added, please contact us!
+            1: Create obstacles by selecting a tool and drawing on the canvas. <br><br>
+            2: Select a LiDAR from the drop-down. <br><br>
+            3. Change room length to reflect the real world.<br><br>
+            4: Hit "Play" and move the cursor on the canvas to see how the LiDAR behaves<br><br>
+            5: Hit “Stop” to add more obstacles or to modify Range & Resolution values.<br><br>
+            6: Hit “Reset” to clear the canvas..<br><br>
+            Note:<br><br>
+            1: In case the LiDAR has a range of values, the max value is used for visualization.<br><br>
+            2: The tool is currently designed for 2D Visualization only.<br><br>
+            3: If you want a new LiDAR to be added, please contact us!<br><br>
+            
           </p>
         </div>
         <div id="update"></div>
@@ -97,21 +100,21 @@
             <label id= "a" for="angle">Angular Resolution</label>
             <div class="inputbox">
               <input type="number" step="0.1" id="angle" onclick="angle()" onchange="resetSelecter()" placeholder="angle" data-inline="true" value="1" ></input>
-              °
+              <span>°</span>
             </div>
           </div>
           <div class="input">
             <label id="b" for="range" >Detection Range</label>
             <div class="inputbox">
             <input type="number" id="range" onclick="rangeofrays()" onchange="resetSelecter()" placeholder="detection distance" data-inline="true" value="500"></input>
-            m
+            <span>m</span>
             </div>
           </div>
           <div class="input">
             <label id="c" for="angrange">Angular Range</label>
             <div class="inputbox">
             <input type="number" id="angrange" onclick="angularrange()" onchange="resetSelecter()" data-inline="true" placeholder="Angle Range" value="360"></input>
-            °
+            <span>°</span>
             </div>
           </div>
           <!-- <div class="input">
@@ -137,7 +140,7 @@
         </div>
       </div>
       <!-- Canves Card======================================== -->
-      <div class="canvesCard">
+      <div class="canvesCard" oncontextmenu="return false;">
         <div class="input roomLength">
             <label id="widlabel" for="length">Room Length</label>
             <div class="inputbox">

@@ -3,7 +3,7 @@ let dropdown = document.getElementById("lidar");
 dropdown.length = 0;
 let flag = true;
 let defaultOption = document.createElement("option");
-defaultOption.text = "Choose Lidar Type";
+defaultOption.text = "Pick a LiDAR";
 dropdown.add(defaultOption);
 dropdown.selectedIndex = 0;
 
@@ -31,7 +31,7 @@ request.send();
 function assist(lidar) {
   var output;
   // console.log(lidar.options[lidar.selectedIndex].entries);
-  if (document.querySelector(".selecter").value !== "Choose Lidar Type") {
+  if (document.querySelector(".selecter").value !== "Pick a LiDAR") {
     output = "<h3>" + lidar.options[lidar.selectedIndex].text + "</h3><br>";
     output = output + "<p>";
     lidar.options[lidar.selectedIndex].entries.forEach((element) => {
@@ -72,5 +72,5 @@ function assist(lidar) {
 const selecter = document.querySelector("select");
 const resetSelecter = () => {
   console.log(selecter.value);
-  selecter.value = "Choose Lidar Type";
+  selecter.value = "Pick a LiDAR";
 };
