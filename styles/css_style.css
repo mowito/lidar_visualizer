@@ -1438,6 +1438,9 @@ body {
 .my_team_box .tem_qualifia {
   font-size: 14px;
 }
+.fixed-header {
+  padding: 18px 60px;
+}
 @media (max-width: 768px) {
   .m_c_heading {
     position: absolute;
@@ -1545,252 +1548,251 @@ body {
     top: 18px;
     left: 10px;
   }
-  }
-  .hero_slider_con {
-    position: absolute;
-    left: 10px;
-    z-index: 9;
-    width: 65%;
-    top: 80px;
-  }
-  .hero_slider_con h1 {
-    font-size: 15px;
-    color: #000000;
-    line-height: 20px;
-  }
-  .hero_slider_con p {
-    font-size: 13px;
-    line-height: 20px;
-    margin: 0px 0;
-    color: #000000;
-  }
-  .read_more {
-    font-weight: bold;
-    font-size: 14px;
-    padding: 12px;
-    display: inline-block;
-    width: 103px;
-    margin: 15px 0;
-    text-align: center;
-  }
-  .try_it_out {
-    font-weight: bold;
-    font-size: 14px;
-    padding: 12px;
-    display: block;
-    display: inline-block;
-    width: 104px;
-    text-align: center;
-  }
-  .top_main_section {
-    min-height: auto;
-  }
-  .col_box_one {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  .col_box_two {
-    width: 100%;
-    text-align: center;
-  }
-  .my_srvs_box_con h2 {
-    text-align: center;
-  }
-  .my_srvs_box_con p {
-    text-align: center;
-  }
-  .my_abt_con h2 {
-    font-size: 23px;
-    line-height: 30px;
-  }
-  .client_conta {
-    display: block;
-    margin-bottom: 30px;
-  }
-  .client_conta li {
-    width: 100%;
-    margin-bottom: 15px;
-  }
-  .fact_conta {
-    display: block;
-    margin-bottom: 30px;
-  }
-  .fact_conta li {
-    width: 100%;
-    margin-bottom: 15px;
-  }
-  .fact_info {
-    padding: 0 20px !important;
-    box-sizing: border-box;
-  }
-  .fact_info h2 {
-    margin: 30px 0;
-  }
-  .my_c_list li span {
-    display: block;
-  }
-  .my_c_list li span img {
-    width: 100%;
-  }
-  .my_c_list li {
-    margin-bottom: 15px;
-  }
-  .in_client_con {
-    display: block;
-    text-align: center;
-  }
-  .in_client_con ul li {
-    width: auto;
-  }
-  .in_client_con ul li {
-    margin-bottom: 15px;
-  }
-  .in_client_con {
-    display: block;
-    text-align: center;
-  }
-  .in_client_con ul li {
-    width: auto;
-  }
-  .in_client_con ul li {
-    margin-bottom: 15px;
-  }
-  .in_news_con {
-    display: block;
-    text-align: center;
-  }
-  .in_news_con ul li {
-    width: auto;
-  }
-  .in_news_con ul li {
-    margin-bottom: 15px;
-  }
-  .hor_table_white_con {
-    display: block;
-    text-align: center;
-  }
-  .hor_table_white_con ul li {
-    width: auto;
-  }
-  .hor_table_white_con ul li {
-    margin-bottom: 15px;
-  }
-  .news_bg {
-    height: auto;
-  }
-  .my_contac_form {
-    width: 100%;
-  }
-  .left_contact_info {
-    width: 100%;
-  }
-  .contact_top {
-    padding: 20px !important;
-    box-sizing: border-box;
-  }
-  .footer_con .box_two {
-    width: 100%;
-    padding: 15px;
-    box-sizing: border-box;
-  }
-  .about_contact {
-    padding: 15px;
-    box-sizing: border-box;
-  }
-  .social_info li {
-    margin-bottom: 15px;
-  }
-  .copy_con {
-    text-align: center;
-  }
-  .pvc {
-    display: block;
-  }
-  .pvc li:nth-child(1) {
-    border: none;
-    margin-left: 0;
-    margin-right: 0;
-    margin-bottom: 10px;
-  }
-  .policy_privacy {
-    text-align: center;
-    padding: 15px 0;
-  }
-  .my_abt_con {
-    padding: 50px 0;
-  }
-  .abt_padd {
-    padding: 50px 20px !important;
-    box-sizing: border-box;
-  }
-  .my_abt_con p {
-    font-size: 14px;
-  }
-  .fixed-header {
-    padding: 32px 15px;
-  }
-  .mobile_menu {
-    display: block;
-    float: right;
-    margin: -17px 0;
-  }
-  .tab_menu {
-    position: absolute;
-    right: 11px;
-    background: #0644d4;
-    border-radius: 3px;
-    top: 65px;
-    padding: 20px;
-  }
-  .mobile_ico {
-    width: 30px;
-    display: inline-block;
-    position: absolute;
-    top: 16px;
-    right: 20px;
-  }
-  .mobile_ico img {
-    width: 100%;
-  }
-  .tab_menu li {
-    margin-bottom: 15px;
-  }
-  .tab_menu li a {
-    color: #fff;
-    padding: 0;
-    font-size: 14px;
-  }
-  .fixed-header .mobile_ico {
-    right: 20px;
-  }
-  #my_contact_re h2 {
-    font-size: 18px;
-  }
-  .rct_c {
-    padding: 15px;
-  }
-  .navigation_heading {
-    margin: 35px 0 0;
-  }
-  .navigation_txt p {
-    line-height: 29px;
-  }
-  .navigation_heading {
-    margin: 35px 0 0;
-    padding-bottom: 0 !important;
-  }
-  .card-body p {
-    line-height: 21px;
-    font-size: 14px;
-  }
-  .card-body ul li {
-    line-height: 21px;
-    font-size: 14px;
-  }
-  footer {
-    padding: 0 15px;
-    font-size: 14px;
-    line-height: 21px;
-    margin: 15px 0 0;
-  }
+}
+.hero_slider_con {
+  position: absolute;
+  left: 10px;
+  z-index: 9;
+  width: 65%;
+  top: 80px;
+}
+.hero_slider_con h1 {
+  font-size: 15px;
+  color: #000000;
+  line-height: 20px;
+}
+.hero_slider_con p {
+  font-size: 13px;
+  line-height: 20px;
+  margin: 0px 0;
+  color: #000000;
+}
+.read_more {
+  font-weight: bold;
+  font-size: 14px;
+  padding: 12px;
+  display: inline-block;
+  width: 103px;
+  margin: 15px 0;
+  text-align: center;
+}
+.try_it_out {
+  font-weight: bold;
+  font-size: 14px;
+  padding: 12px;
+  display: block;
+  display: inline-block;
+  width: 104px;
+  text-align: center;
+}
+.top_main_section {
+  min-height: auto;
+}
+.col_box_one {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.col_box_two {
+  width: 100%;
+  text-align: center;
+}
+.my_srvs_box_con h2 {
+  text-align: center;
+}
+.my_srvs_box_con p {
+  text-align: center;
+}
+.my_abt_con h2 {
+  font-size: 23px;
+  line-height: 30px;
+}
+.client_conta {
+  display: block;
+  margin-bottom: 30px;
+}
+.client_conta li {
+  width: 100%;
+  margin-bottom: 15px;
+}
+.fact_conta {
+  display: block;
+  margin-bottom: 30px;
+}
+.fact_conta li {
+  width: 100%;
+  margin-bottom: 15px;
+}
+.fact_info {
+  padding: 0 20px !important;
+  box-sizing: border-box;
+}
+.fact_info h2 {
+  margin: 30px 0;
+}
+.my_c_list li span {
+  display: block;
+}
+.my_c_list li span img {
+  width: 100%;
+}
+.my_c_list li {
+  margin-bottom: 15px;
+}
+.in_client_con {
+  display: block;
+  text-align: center;
+}
+.in_client_con ul li {
+  width: auto;
+}
+.in_client_con ul li {
+  margin-bottom: 15px;
+}
+.in_client_con {
+  display: block;
+  text-align: center;
+}
+.in_client_con ul li {
+  width: auto;
+}
+.in_client_con ul li {
+  margin-bottom: 15px;
+}
+.in_news_con {
+  display: block;
+  text-align: center;
+}
+.in_news_con ul li {
+  width: auto;
+}
+.in_news_con ul li {
+  margin-bottom: 15px;
+}
+.hor_table_white_con {
+  display: block;
+  text-align: center;
+}
+.hor_table_white_con ul li {
+  width: auto;
+}
+.hor_table_white_con ul li {
+  margin-bottom: 15px;
+}
+.news_bg {
+  height: auto;
+}
+.my_contac_form {
+  width: 100%;
+}
+.left_contact_info {
+  width: 100%;
+}
+.contact_top {
+  padding: 20px !important;
+  box-sizing: border-box;
+}
+.footer_con .box_two {
+  width: 100%;
+  padding: 15px;
+  box-sizing: border-box;
+}
+.about_contact {
+  padding: 15px;
+  box-sizing: border-box;
+}
+.social_info li {
+  margin-bottom: 15px;
+}
+.copy_con {
+  text-align: center;
+}
+.pvc {
+  display: block;
+}
+.pvc li:nth-child(1) {
+  border: none;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 10px;
+}
+.policy_privacy {
+  text-align: center;
+  padding: 15px 0;
+}
+.my_abt_con {
+  padding: 50px 0;
+}
+.abt_padd {
+  padding: 50px 20px !important;
+  box-sizing: border-box;
+}
+.my_abt_con p {
+  font-size: 14px;
+}
+.fixed-header {
+  padding: 18.3px 60px;
+}
+.mobile_menu {
+  display: block;
+  float: right;
+  margin: -17px 0;
+}
+.tab_menu {
+  position: absolute;
+  right: 11px;
+  background: #0644d4;
+  border-radius: 3px;
+  top: 65px;
+  padding: 20px;
+}
+.mobile_ico {
+  width: 30px;
+  display: inline-block;
+  position: absolute;
+  top: 16px;
+  right: 20px;
+}
+.mobile_ico img {
+  width: 100%;
+}
+.tab_menu li {
+  margin-bottom: 15px;
+}
+.tab_menu li a {
+  color: #fff;
+  padding: 0;
+  font-size: 14px;
+}
+.fixed-header .mobile_ico {
+  right: 20px;
+}
+#my_contact_re h2 {
+  font-size: 18px;
+}
+.rct_c {
+  padding: 15px;
+}
+.navigation_heading {
+  margin: 35px 0 0;
+}
+.navigation_txt p {
+  line-height: 29px;
+}
+.navigation_heading {
+  margin: 35px 0 0;
+  padding-bottom: 0 !important;
+}
+.card-body p {
+  line-height: 21px;
+  font-size: 14px;
+}
+.card-body ul li {
+  line-height: 21px;
+  font-size: 14px;
+}
+footer {
+  padding: 0 15px;
+  font-size: 14px;
+  line-height: 21px;
+  margin: 15px 0 0;
 }
